@@ -46,8 +46,6 @@ body {
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
-    /* Prevent rubber banding on iOS during scroll of internal elements */
-    overscroll-behavior-y: none;
 }
 
 /* --- Progress Bar --- */
@@ -95,17 +93,21 @@ main#quiz_container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* justify-content: center; Changed for scrollable sections */
+    justify-content: center;
     padding: 96px 20px 40px;
     width: 100%;
     max-width: 640px;
     margin: 0 auto;
-    position: relative;
 }
 
 /* --- Cards --- */
 .content-wrapper {
     background: var(--card-bg);
+    /* No heavy borders in light mode, just clean spacing or subtle shadow if needed. 
+       User asked for "Fundo Branco", so maybe just content on white body?
+       Or card on soft gray? "Fundo branco" implies the page background. 
+       I will keep content wrapper transparent or minimal if body is white.
+    */
     width: 100%;
     animation: fadeInUp 0.5s var(--ease-out) forwards;
 }
@@ -175,6 +177,7 @@ ul li::before {
     border: none;
     padding: 20px 32px;
     border-radius: 8px;
+    /* Slightly sharper than 12px for corporate feel */
     font-size: 1.05rem;
     font-weight: 600;
     cursor: pointer;
@@ -247,7 +250,11 @@ ul li::before {
     }
 }
 
-/* --- Calculations & Insights --- */
+/* --- Insights Special Styling --- */
+.quiz-screen[id^="screen_insight"] .content-wrapper {
+    /* Optional: Subtle background for insights */
+}
+
 .insight-badge {
     display: inline-flex;
     align-items: center;
@@ -268,40 +275,14 @@ ul li::before {
 
 .calculation-display {
     background: #FEF2F2;
+    /* Red 50 */
     border: 1px solid #FECACA;
+    /* Red 200 */
     color: #991B1B;
     padding: 24px;
     border-radius: 12px;
     margin: 1.5rem 0;
     text-align: center;
-}
-
-/* Progressive Algo Cards */
-.var-cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-    margin-bottom: 16px;
-}
-
-.var-card {
-    background: #F8FAFC;
-    border: 1px solid #E2E8F0;
-    padding: 8px;
-    text-align: center;
-    border-radius: 8px;
-}
-
-.var-card label {
-    display: block;
-    font-size: 0.7rem;
-    color: #64748B;
-    margin-bottom: 4px;
-}
-
-.var-card strong {
-    font-size: 0.9rem;
-    color: #334155;
 }
 
 .big-number {
@@ -310,224 +291,6 @@ ul li::before {
     color: #EF4444;
     display: block;
     margin-top: 8px;
-}
-
-/* --- New Calculating Screen --- */
-#screen_calculating {
-    text-align: center;
-}
-
-.calc-progress-wrapper {
-    width: 100%;
-    height: 8px;
-    background: #F1F5F9;
-    border-radius: 99px;
-    overflow: hidden;
-    margin: 32px 0;
-}
-
-.calc-progress-fill {
-    height: 100%;
-    background: var(--primary);
-    width: 0%;
-    border-radius: 99px;
-    /* Animation handled by JS for random duration */
-}
-
-.calc-steps {
-    height: 24px;
-    /* Fixed height to prevent jumps */
-    color: var(--text-muted);
-    font-size: 0.9rem;
-    font-weight: 500;
-}
-
-/* --- New Visuals (Offer/Result) --- */
-
-/* Donut Chart (Pure CSS) */
-.visual-donut-container {
-    position: relative;
-    width: 140px;
-    height: 140px;
-    margin: 24px auto;
-}
-
-.visual-donut {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background: conic-gradient(var(--danger) 0deg 0deg,
-            var(--success) 0deg 360deg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 1s ease-out;
-}
-
-.visual-donut::after {
-    content: "";
-    /* Inner hole */
-    width: 70%;
-    height: 70%;
-    background: var(--bg-color);
-    border-radius: 50%;
-}
-
-.donut-center-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    line-height: 1.1;
-}
-
-.donut-center-text strong {
-    font-size: 1.1rem;
-    display: block;
-}
-
-.donut-center-text span {
-    font-size: 0.7rem;
-    color: #64748B;
-}
-
-.visual-legend {
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-    margin-bottom: 24px;
-    font-size: 0.8rem;
-}
-
-.legend-item span {
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    margin-right: 4px;
-}
-
-/* Risk Bar */
-.visual-bar-container {
-    margin: 24px 0;
-}
-
-.visual-bar-label {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.85rem;
-    margin-bottom: 6px;
-    color: #475569;
-}
-
-.visual-bar-track {
-    width: 100%;
-    height: 12px;
-    background: #F1F5F9;
-    border-radius: 6px;
-    margin-bottom: 16px;
-    overflow: hidden;
-}
-
-.visual-bar-fill {
-    height: 100%;
-    border-radius: 6px;
-    width: 0%;
-    /* JS will animate */
-    transition: width 1s ease-out;
-}
-
-.fill-risk {
-    background: var(--danger);
-}
-
-.fill-safe {
-    background: var(--success);
-}
-
-/* Scorecard */
-.visual-scorecard {
-    background: #F8FAFC;
-    border-radius: 8px;
-    padding: 16px;
-    margin-bottom: 24px;
-}
-
-.score-row {
-    display: flex;
-    justify-content: space-between;
-    padding: 12px 0;
-    border-bottom: 1px solid #E2E8F0;
-    font-size: 0.95rem;
-}
-
-.score-row:last-child {
-    border-bottom: none;
-}
-
-.badge-status {
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-}
-
-.badge-bad {
-    background: #FECACA;
-    color: #991B1B;
-}
-
-.badge-mid {
-    background: #FEF3C7;
-    color: #92400E;
-}
-
-.badge-good {
-    background: #D1FAE5;
-    color: #065F46;
-}
-
-/* --- Mini LP Scrollable Offer --- */
-#screen_offer {
-    /* Allow internal scrolling or simply flow naturally with body */
-    padding-bottom: 80px;
-    /* Space for sticky CTA */
-}
-
-.sticky-cta-mobile {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: white;
-    padding: 12px 20px;
-    border-top: 1px solid #E2E8F0;
-    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.05);
-    z-index: 999;
-    transform: translateY(100%);
-    transition: transform 0.3s ease;
-    display: none;
-    /* hidden by default, JS enables */
-    text-align: center;
-}
-
-.sticky-cta-mobile.visible {
-    transform: translateY(0);
-}
-
-.sticky-cta-mobile .btn-sticky {
-    padding: 12px;
-    margin: 0;
-    font-size: 0.95rem;
-    width: 100%;
-}
-
-.sticky-subtext {
-    font-size: 0.7rem;
-    color: #64748B;
-    margin-top: 4px;
 }
 
 /* --- Results --- */
@@ -548,13 +311,175 @@ ul li::before {
     margin-bottom: 2rem;
 }
 
-/* --- Offer Section Internal --- */
+/* --- Offer Section --- */
 .offer-box {
     background: #F8FAFC;
     border: 1px solid var(--border-color);
     border-radius: 16px;
     padding: 32px 24px;
     margin: 32px 0;
+}
+
+/* --- Offer Mini-LP --- */
+.offer-hero {
+    background: linear-gradient(180deg, var(--primary-light), #FFFFFF);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 20px;
+    margin: 16px 0 20px;
+}
+
+.offer-hero p { margin: 0.5rem 0; }
+
+.offer-metrics {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 14px;
+}
+
+.metric {
+    background: #FFFFFF;
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 12px 14px;
+}
+
+.metric .label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+}
+
+.metric .value {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+.bars {
+    margin-top: 12px;
+}
+
+.bar {
+    margin-bottom: 10px;
+}
+
+.bar .bar-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+}
+
+.bar-track {
+    background: #E5E7EB;
+    border-radius: 999px;
+    height: 10px;
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%;
+    width: 0%;
+    border-radius: 999px;
+    background: var(--primary);
+    transition: width 700ms ease;
+}
+
+.offer-section {
+    margin: 18px 0;
+    padding: 16px;
+    background: #FFFFFF;
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+}
+
+.offer-section h3 {
+    margin: 0 0 10px;
+    font-size: 1.1rem;
+    color: var(--primary);
+}
+
+.offer-bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.offer-bullets li {
+    padding: 10px 0;
+    border-bottom: 1px dashed #E5E7EB;
+}
+
+.offer-bullets li:last-child { border-bottom: 0; }
+
+.offer-bullets .bullet-title {
+    font-weight: 800;
+}
+
+.offer-bullets .bullet-desc {
+    color: var(--text-muted);
+    margin-top: 3px;
+}
+
+.offer-price {
+    text-align: center;
+    padding: 18px;
+    background: #0B1220;
+    color: #FFFFFF;
+    border-radius: 16px;
+}
+
+.price-line {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.85);
+}
+
+.price {
+    font-size: 2.1rem;
+    font-weight: 900;
+    margin: 8px 0 0;
+}
+
+.price small {
+    font-size: 1rem;
+    font-weight: 700;
+    opacity: 0.9;
+}
+
+.subtext {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.8);
+    margin: 10px 0 0;
+}
+
+/* Calculando */
+.calc-progress {
+    width: 100%;
+    height: 12px;
+    background: #E5E7EB;
+    border-radius: 999px;
+    overflow: hidden;
+    margin: 14px 0 10px;
+}
+
+.calc-fill {
+    height: 100%;
+    width: 0%;
+    background: var(--primary);
+    border-radius: 999px;
+    transition: width 200ms linear;
+}
+
+.calc-percent {
+    font-weight: 800;
+    color: var(--primary);
+}
+
+@media (min-width: 640px) {
+    .offer-metrics { grid-template-columns: 1fr 1fr; }
 }
 
 .feature-list li {
@@ -579,10 +504,5 @@ ul li::before {
 
     .btn-primary {
         padding: 18px;
-    }
-
-    .sticky-cta-mobile {
-        display: block;
-        /* Show on mobile */
     }
 }
