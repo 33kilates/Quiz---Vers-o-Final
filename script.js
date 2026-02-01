@@ -337,8 +337,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function trackEvent(name, params = {}) {
-        if (typeof trk === 'function') trk(name, params);
-        if (window.fbq) window.fbq('trackCustom', name, params);
+        try {
+            if (typeof trk === 'function') trk(name, params);
+            if (window.fbq) window.fbq('trackCustom', name, params);
+        } catch (e) {
+            console.warn('Analytics Error:', e);
+        }
     }
 
     function captureUTMs() {
