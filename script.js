@@ -236,7 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!isNaN(num)) {
                 // ~12 steps total logic
                 percent = (num / 12) * 100;
-                text = `ETAPA ${num} DE 6`;
+                text = `${num}/6`;
             }
         }
         progressBar.style.width = `${percent}%`;
