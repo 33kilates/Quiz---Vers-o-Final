@@ -3,6 +3,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- State Management ---
     const state = {
         answers: {},
+        logic: {
+            actives: 10,
+            lost: 0,
+            repoHours: 1,
+            avgLife: 3, // months
+            profit: 150,
+            churnPct: 0,
+            repoCost: 0,
+            lostProfitYear: 0
+        },
         currentStepIndex: 0,
         screens: [],
         profile: 'Empresário em Construção'
@@ -22,6 +32,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Start View
         updateView();
+
+        // Track Start
+        safeTrackEvent('quiz_start', {
+            event_id: 'QZ_START',
+            quiz_name: 'diagnostico_consignado',
+            origem: 'meta_ads'
+        });
     }
 
     // --- Core Navigation ---
@@ -32,18 +49,44 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    window.selectOption = function (questionId, value, numericValue = null) {
+    window.selectOption = function (questionId, value, numericValue = null, tag = null) {
         // 1. Save Answer
-        state.answers[`q${questionId}`] = {
+        state.answers[questionId] = {
             value: value,
-            numeric: numericValue
+            numeric: numericValue,
+            tag: tag
         };
 
-        // 2. Track Interaction (Fail-safe)
-        safeTrackEvent(`quiz_option_q${questionId}`, { value: value });
+        // 2. Logic Updates (Immediate)
+        if (questionId === 'P3_vazamento_base') state.logic.lost = numericValue;
+        if (questionId === 'P4_tempo_ativo') state.logic.avgLife = numericValue;
+        if (questionId === 'P5_lucro') state.logic.profit = numericValue;
 
-        // 3. Move Next
+        // 3. Track Answer
+        safeTrackEvent('quiz_answer', {
+            event_id: `QZ_ANSWER_${questionId}`,
+            pergunta: questionId,
+            resposta: value
+        });
+
+        // 4. Move Next
         setTimeout(nextScreen, 300);
+    };
+
+    // --- Special Questions Handlers ---
+    window.setQ3Part1 = function (val) {
+        state.logic.actives = val;
+        // Visual Selection
+        event.target.classList.add('selected'); // Simple visual feedback
+
+        // Show Part 2
+        document.getElementById('q3_part2').style.display = 'block';
+    };
+
+    window.setQ4Part1 = function (val) {
+        state.logic.repoHours = val;
+        event.target.classList.add('selected');
+        document.getElementById('q4_part2').style.display = 'block';
     };
 
     // --- Calculating Screen Logic ---
@@ -54,46 +97,53 @@ document.addEventListener('DOMContentLoaded', () => {
         state.currentStepIndex = calcIdx;
         updateView();
 
-        // Explicit Event
-        safeTrackEvent('quiz_calc_view');
+        safeTrackEvent('quiz_calculation_start', { event_id: 'QZ_CALC_START' });
 
         // Animation
         const fill = document.getElementById('calc_fill');
         const text = document.getElementById('calc_text_step');
 
         if (fill) {
-            // Random duration for realism
-            const duration = 1800 + Math.random() * 800;
+            const duration = 2500; // 2.5s total calculation
 
-            fill.style.transition = `width ${duration}ms linear`;
-            // Force reflow
-            void fill.offsetWidth;
-            fill.style.width = '100%';
+            // CSS Transition
+            fill.style.transition = `width ${duration}ms ease-out`;
+            setTimeout(() => { fill.style.width = '100%'; }, 50);
 
             // Text Steps
-            const steps = ["Estimando capital exposto...", "Calculando risco por ciclo...", "Montando seu diagnóstico..."];
-            let stepIdx = 0;
-            const stepTime = duration / steps.length;
+            const steps = [
+                "medindo sua base que vaza…",
+                "calculando seu custo de recomeço…",
+                "projetando lucro que não fica…",
+                "identificando seu perfil de operação…",
+                "montando sua Equipe Híbrida ideal…"
+            ];
 
-            // Initial Text
-            if (text) text.innerText = steps[0];
-
-            let counter = 1;
+            let counter = 0;
             const stepInterval = setInterval(() => {
                 if (counter < steps.length) {
                     if (text) text.innerText = steps[counter];
                     counter++;
                 }
-            }, stepTime);
+            }, duration / steps.length);
 
             // Finish
             setTimeout(() => {
                 clearInterval(stepInterval);
+                runFinalCalculations(); // Ensure final numbers are ready
                 determineProfile();
+
+                safeTrackEvent('quiz_calculation_end', {
+                    event_id: 'QZ_CALC_END',
+                    perfil_empresario: state.profile,
+                    vazamento_percentual: state.logic.churnPct,
+                    dinheiro_deixa_ganhar_ano: state.logic.lostProfitYear
+                });
+
                 showResult();
             }, duration);
         } else {
-            // Fallback if DOM missing
+            runFinalCalculations();
             determineProfile();
             showResult();
         }
@@ -105,15 +155,24 @@ document.addEventListener('DOMContentLoaded', () => {
         if (resIdx > -1) {
             state.currentStepIndex = resIdx;
             updateView();
-            renderVisuals();
-            safeTrackEvent('quiz_result_view', { profile: state.profile });
+
+            safeTrackEvent('quiz_result_view', {
+                event_id: `QZ_RESULT_${state.profile.replace(/ /g, '_')}`,
+                perfil: state.profile,
+                gargalo_principal: getGargalo()
+            });
         }
     };
 
     window.goToCheckout = function () {
-        safeTrackEvent('InitiateCheckout', { profile: state.profile });
+        safeTrackEvent('quiz_offer_click', {
+            event_id: 'QZ_OFFER_CLICK',
+            perfil_empresario: state.profile,
+            gargalo_principal: getGargalo(),
+            destino: "ticto_checkout"
+        });
 
-        const checkoutBaseUrl = "https://pay.ticto.com.br/CHECKOUT_ID";
+        const checkoutBaseUrl = "https://pay.ticto.com.br/CHECKOUT_ID"; // Replace with real ID
         const utms = getStoredUTMs();
         const url = new URL(checkoutBaseUrl);
 
@@ -127,27 +186,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- View Update Engine ---
     function updateView() {
-        // 1. UI Reset
+        // UI Reset
         state.screens.forEach(el => el.classList.remove('is-active'));
         const currentScreen = state.screens[state.currentStepIndex];
         currentScreen.classList.add('is-active');
         window.scrollTo(0, 0);
 
-        const screenId = currentScreen.id;
+        const screenDetails = currentScreen.id;
 
-        // 2. Run Calculations (PRIORITY: UI Updates First)
-        if (screenId === 'screen_insight3_risk') runInsightRiskCalc();
-        if (screenId === 'screen_b2_insight1') runInsightTimeCalc();
+        // Run Logic for Insights
+        if (screenDetails === 'screen_insight3') runInsight3();
+        if (screenDetails === 'screen_insight4') runInsight4();
+        if (screenDetails === 'screen_insight6') runInsight6();
+        if (screenDetails === 'screen_offer') runOfferLogic();
 
-        // 3. Update Progress Bar
+        // Update Progress Bar
         updateProgress(currentScreen.dataset.step);
 
-        // 4. Tracking (Last, so errors don't block UI)
-        if (screenId !== 'screen_calculating') {
-            safeTrackEvent('quiz_view', { screen_id: screenId });
+        // Track Step View
+        if (screenDetails !== 'screen_calculating') {
+            let stepName = screenDetails.replace('screen_', '').toUpperCase();
+            safeTrackEvent('quiz_step_view', {
+                event_id: `QZ_STEP_${stepName}`,
+                step_name: stepName
+            });
         }
-        if (screenId === 'screen_insight3_risk') safeTrackEvent('quiz_insight_risk_view');
-        if (screenId === 'screen_b2_insight1') safeTrackEvent('quiz_insight_time_view');
     }
 
     function updateProgress(step) {
@@ -164,7 +227,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (step === 'intro' || step === '0' || step === '0.1') {
             percent = 5;
         } else if (step === 'insight') {
-            // Rough estimate for insights based on current index
             percent = Math.min((state.currentStepIndex / state.screens.length) * 100, 95);
         } else if (step === 'result' || step === 'offer') {
             percent = 100;
@@ -172,135 +234,142 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             const num = parseFloat(step);
             if (!isNaN(num)) {
-                // Assuming ~12 steps total
+                // ~12 steps total logic
                 percent = (num / 12) * 100;
-                text = `ETAPA ${num} DE 12`;
+                text = `ETAPA ${num} DE 6`;
             }
         }
         progressBar.style.width = `${percent}%`;
         progressText.innerText = text;
     }
 
-    // --- Calculation Logic ---
-    function runInsightRiskCalc() {
-        console.log('Running Risk Calc...');
+    // --- Calculation Logic (Insights) ---
+    function runInsight3() {
+        const l = state.logic.lost;
+        const a = state.logic.actives;
+        let churn = 0;
+        if (a > 0) churn = (l / a) * 100;
+        state.logic.churnPct = churn;
 
-        // Defensive defaults: If user clicked non-numeric, use reasonable fallback
-        const qtd = state.answers['q2'] ? state.answers['q2'].numeric : 10;
-        const val = state.answers['q3'] ? state.answers['q3'].numeric : 800;
+        setSafeText('disp_actives', a);
+        setSafeText('disp_lost', l);
 
-        // Ensure numbers
-        const nQtd = Number(qtd) || 10;
-        const nVal = Number(val) || 800;
-
-        const total = nQtd * nVal;
-        const risk = total * 0.15;
-
-        // UI Updates
-        setSafeText('live_risk_qtd', nQtd);
-        setSafeText('live_risk_val', formatMoney(nVal));
-        setSafeText('live_risk_total', formatMoney(total));
-
-        // Animate
-        const el = document.getElementById('live_risk_final');
-        if (el) animateCountUp(el, 0, risk, 1500, true);
-
-        safeTrackEvent('quiz_insight_risk_calc_done', { risk_val: risk });
+        const el = document.getElementById('calc_churn_pct');
+        if (el) animateCountUp(el, 0, churn, 1500, false, '%');
     }
 
-    function runInsightTimeCalc() {
-        const time = state.answers['q8'] ? state.answers['q8'].numeric : 15;
-        const nTime = Number(time) || 15;
+    function runInsight4() {
+        const l = state.logic.lost;
+        const h = state.logic.repoHours;
+        const totalHours = l * h;
 
-        const totalMin = nTime * 10;
-        const finalVal = (totalMin / 60).toFixed(1);
+        const el = document.getElementById('calc_hours_lost');
+        if (el) animateCountUp(el, 0, totalHours, 1500, false, ' horas');
+    }
 
-        setSafeText('live_time_bag', `~${nTime} min`);
+    function runInsight6() {
+        const l = state.logic.lost;
+        const p = state.logic.profit;
+        const t = state.logic.avgLife; // retention months
 
-        const el = document.getElementById('live_time_calc');
-        if (el) animateCountUp(el, 0, parseFloat(finalVal), 1500, false, ' horas');
+        const ltv = p * t;
+        const lostAnnual = 12 * l * ltv;
+        state.logic.lostProfitYear = lostAnnual;
 
-        safeTrackEvent('quiz_insight_time_calc_done');
+        setSafeText('disp_profit', formatMoney(p));
+        setSafeText('disp_retention', `${t} meses`);
+        setSafeText('disp_lost_text', l);
+
+        const elLtv = document.getElementById('calc_ltv');
+        if (elLtv) animateCountUp(elLtv, 0, ltv, 1000, true);
+
+        const elYear = document.getElementById('calc_lost_profit_yr');
+        if (elYear) animateCountUp(elYear, 0, lostAnnual, 2000, true, ' /ano');
+    }
+
+    function runFinalCalculations() {
+        // Ensure all logic is up to date
+    }
+
+    function runOfferLogic() {
+        // Populate Mini LP ROI Card
+        setSafeText('roi_churn', `${state.logic.churnPct.toFixed(1)}%`);
+        setSafeText('roi_hours', (state.logic.lost * state.logic.repoHours));
+        setSafeText('roi_money', formatMoney(state.logic.lostProfitYear));
     }
 
     function determineProfile() {
-        const qtd = state.answers['q2'] ? state.answers['q2'].numeric : 0;
-        const nQtd = Number(qtd) || 0;
+        const a = state.logic.actives;
+        let profile = "";
+        let diagText = "";
+        let teamHtml = "";
+        let nextStep = "";
+        let ctaText = "Ver a solução";
 
-        let profile = "Empresário em Construção";
-        let text = "";
-        let goodNews = "";
-
-        if (nQtd > 70) {
+        // 1. Profile Logic
+        if (a > 100) {
             profile = "Empresário em Escala";
-            text = "Seu diagnóstico é direto: <strong>Você já opera em volume.</strong> Mas paga um preço alto por isso. Revendedoras entram e saem, o controle depende de equipe e o risco se dilui, mas não desaparece.";
-            goodNews = "Você não precisa de mais gente. Precisa decidir melhor quem entra, quanto recebe e onde se encaixa.";
-        } else if (nQtd > 30) {
+            diagText = `Seu diagnóstico é direto: <strong>Você já opera em volume.</strong><br>E paga caro pela falta de previsibilidade.<br><br>
+            Em escala, “gente saindo” não é normal. É imposto silencioso.<br><br>
+            Sem método de seleção, o custo indireto sobe, a equipe vira amortecedor de erro e o crescimento vira desgaste.`;
+
+            teamHtml = `<li>✅ <strong>Estáveis</strong> como “coluna” da operação</li>
+                        <li>✅ <strong>Empreendedoras</strong> como “motor” de expansão</li>
+                        <li>✅ <strong>Sprinters</strong> como “picos controlados” (campanhas/datas)</li>`;
+
+            nextStep = "Você não precisa recrutar mais. Você precisa selecionar e distribuir função com critério repetível.";
+            ctaText = "Parar de pagar imposto silencioso de rotatividade";
+
+        } else if (a > 30) {
             profile = "Empresário em Expansão";
-            text = "Seu diagnóstico mostra um alerta importante: <strong>Você já vende. Você já cresceu. Mas o controle não acompanhou.</strong> Hoje, o estoque sai e o risco aumenta.";
-            goodNews = "Você não precisa desacelerar. Precisa organizar os perfis dentro da base.";
+            diagText = `Seu diagnóstico mostra um alerta: <strong>Você já cresceu. Mas está pagando um preço invisível por isso.</strong><br><br>
+            Isso é o furo no balde. Você trabalha para manter — não para avançar.<br><br>
+            Você tem Estáveis segurando tudo, mas um volume alto de perfis que drenam energia (churn). Quando você trata todo mundo igual, sua energia vai pro resgate e o risco cresce.`;
+
+            teamHtml = `<li>✅ Aumentar <strong>Estáveis</strong> (coluna do caixa)</li>
+                        <li>✅ Criar trilha clara para <strong>Empreendedoras</strong> (crescer sem quebrar)</li>
+                        <li>✅ Usar <strong>Sprinters</strong> como aceleração com limite (não como base)</li>`;
+
+            nextStep = "Você não precisa desacelerar. Você precisa trocar “decisão emocional” por “decisão por comportamento”.";
+            ctaText = "Organizar minha base antes de crescer mais";
+
         } else {
             profile = "Empresário em Construção";
-            text = "O seu diagnóstico é claro: <strong>Você ainda está montando sua base.</strong> E hoje, cada nova revendedora consome seu tempo e aumenta seu medo de errar.";
-            goodNews = "Você está no melhor momento possível para acertar isso. Quem organiza a base cedo sofre menos.";
+            diagText = `Seu diagnóstico é claro: <strong>Você ainda não tem um problema grande.</strong><br>Mas está construindo exatamente o tipo de base que vira um problema grande depois.<br><br>
+            Hoje, o vazamento parece pequeno e o lucro que some passa despercebido. É assim que os problemas começam: quando o negócio ainda parece “sob controle”.`;
+
+            teamHtml = `<li>✅ Mais <strong>Estáveis</strong> para segurar previsibilidade</li>
+                        <li>✅ Poucas <strong>Empreendedoras</strong> para puxar crescimento controlado</li>
+                        <li>⚠️ <strong>Sprinters</strong> só com regra clara (senão viram vazamento)</li>`;
+
+            nextStep = "Você não precisa de mais gente. Você precisa de critério repetível antes de liberar responsabilidade.";
+            ctaText = "Evitar que esse problema escale comigo";
         }
 
         state.profile = profile;
-        setSafeText('result_title', profile);
+        setSafeText('result_profile_title', profile);
 
-        const textEl = document.getElementById('result_text');
-        if (textEl) textEl.innerHTML = text;
+        const dEl = document.getElementById('result_diagnosis_text');
+        if (dEl) dEl.innerHTML = diagText;
 
-        setSafeText('result_good_news', goodNews);
+        const tEl = document.getElementById('result_hybrid_team');
+        if (tEl) tEl.innerHTML = teamHtml;
+
+        setSafeText('result_next_step', nextStep);
+        setSafeText('result_cta_button', ctaText);
+
+        // Math
+        setSafeText('result_churn', `${state.logic.churnPct.toFixed(1)}%`);
+        setSafeText('result_time', `${state.logic.lost * state.logic.repoHours} horas`);
+        setSafeText('result_lost_money', formatMoney(state.logic.lostProfitYear));
     }
 
-    function renderVisuals() {
-        const qtd = state.answers['q2'] ? state.answers['q2'].numeric : 10;
-        const val = state.answers['q3'] ? state.answers['q3'].numeric : 800;
-
-        const nQtd = Number(qtd) || 10;
-        const nVal = Number(val) || 800;
-
-        // Donut
-        let controlPct = 90;
-        if (nQtd > 10) controlPct -= (nQtd - 10) * 0.2;
-        controlPct = Math.max(15, controlPct);
-        const outControlPct = 100 - controlPct;
-
-        setSafeText('visual_donut_pct', `${Math.round(outControlPct)}%`);
-
-        const donut = document.getElementById('visual_donut');
-        if (donut) {
-            const deg = (outControlPct / 100) * 360;
-            donut.style.background = `conic-gradient(var(--danger) 0deg ${deg}deg, var(--success) ${deg}deg 360deg)`;
-        }
-
-        // Bar
-        const totalRisk = (nQtd * nVal) * 0.15;
-
-        setSafeText('visual_bar_risk_val', formatMoney(totalRisk));
-
-        const barFill = document.getElementById('visual_bar_risk_fill');
-        if (barFill) barFill.style.width = '80%';
-
-        // Scorecard
-        const sRisk = document.getElementById('score_risk');
-        const sControl = document.getElementById('score_control');
-        const sScale = document.getElementById('score_scale');
-
-        if (nQtd > 50) {
-            updateBadge(sRisk, 'ALTO', 'bad');
-            updateBadge(sControl, 'CRÍTICO', 'bad');
-            updateBadge(sScale, 'TRAVADO', 'bad');
-        } else if (nQtd > 20) {
-            updateBadge(sRisk, 'MÉDIO', 'mid');
-            updateBadge(sControl, 'ATENÇÃO', 'mid');
-            updateBadge(sScale, 'AJUSTÁVEL', 'mid');
-        } else {
-            updateBadge(sRisk, 'BAIXO', 'good');
-            updateBadge(sControl, 'BOM', 'good');
-            updateBadge(sScale, 'PRONTO', 'good');
-        }
+    function getGargalo() {
+        if (state.logic.churnPct > 20) return "Base que vaza";
+        const m = state.answers['P6_metodo_decisao']?.tag || '';
+        if (m === 'feeling' || m === 'sem_criterio') return "Decisão cedo demais";
+        if (state.answers['P2_perfis_revendedoras']?.tag === 'concentracao') return "Dependência perigosa de poucas";
+        return "Gestão de Risco";
     }
 
     // --- Helpers ---
@@ -313,8 +382,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const cta = document.getElementById('sticky_cta');
                     if (offerScreen && offerScreen.classList.contains('is-active') && cta) {
                         const scrollY = window.scrollY;
-                        const docH = document.body.scrollHeight;
-                        if (scrollY > docH * 0.25) cta.classList.add('visible');
+                        if (scrollY > 300) cta.classList.add('visible');
                         else cta.classList.remove('visible');
                     }
                     isScrolling = false;
@@ -333,7 +401,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const currentVal = progress * (end - start) + start;
 
             if (isCurrency) {
-                el.innerText = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(currentVal);
+                el.innerText = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(currentVal) + suffix;
             } else {
                 el.innerText = currentVal.toFixed(1).replace('.', ',') + suffix;
             }
@@ -341,21 +409,14 @@ document.addEventListener('DOMContentLoaded', () => {
             if (progress < 1) {
                 window.requestAnimationFrame(step);
             } else {
-                // Ensure Final Value is exact
                 if (isCurrency) {
-                    el.innerText = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(end);
+                    el.innerText = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(end) + suffix;
                 } else {
                     el.innerText = end.toFixed(1).replace('.', ',') + suffix;
                 }
             }
         };
         window.requestAnimationFrame(step);
-    }
-
-    function updateBadge(el, text, type) {
-        if (!el) return;
-        el.innerText = text;
-        el.className = `badge-status badge-${type}`;
     }
 
     function setSafeText(id, text) {
@@ -367,13 +428,12 @@ document.addEventListener('DOMContentLoaded', () => {
         return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(val);
     }
 
-    function safeTrackEvent(name, params = {}) {
+    function safeTrackEvent(eventName, params = {}) {
         try {
-            if (typeof trk === 'function') trk(name, params);
-            if (window.fbq) window.fbq('trackCustom', name, params);
-            console.log(`[Track] ${name}`, params);
+            if (typeof trk === 'function') trk(eventName, params);
+            console.log(`[Dimpple] ${eventName}`, params);
         } catch (e) {
-            console.warn(`[Track Fail] ${name}`, e);
+            console.warn(`[Track Fail] ${eventName}`, e);
         }
     }
 

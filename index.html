@@ -44,720 +44,720 @@
 
     <main id="quiz_container">
 
-        <!-- TELA 0 — MECANISMO -->
+        <!-- TELA 0 — MECANISMO (ABERTURA) -->
         <section id="screen_00_mechanism" data-step="0" class="quiz-screen is-active">
             <div id="track_view_00" class="tracking-pixel"></div>
             <div class="content-wrapper">
-                <h1 class="headline">O problema do consignado não é vender.<br>É decidir errado antes do estoque sair.
-                </h1>
-                <h2 class="subheadline">A maioria das operações quebra não por falta de produto,<br>mas por colocar
-                    estoque nas mãos erradas no momento errado.</h2>
+                <h1 class="headline">O problema do consignado não é vender.<br>É colocar a maleta na mão errada — e
+                    pagar por isso todo mês.</h1>
 
-                <p>Formulário, feeling e conversa bonita não mostram quem vai vender, quem vai travar estoque e quem vai
-                    virar problema depois.</p>
-                <p>Operações que crescem com segurança fazem diferente: elas decidem antes, não corrigem depois.</p>
+                <h2 class="subheadline">Você vai responder 6 perguntas rápidas.<br>No final, você vai ver (com os seus
+                    números):</h2>
 
-                <div style="margin: 32px 0;">
-                    <p><strong>Ao responder esse diagnóstico rápido, você vai descobrir:</strong></p>
+                <div style="margin: 24px 0;">
                     <ul>
-                        <li>onde seu dinheiro perde controle hoje</li>
-                        <li>se o seu modelo permite crescer ou só aumenta risco</li>
-                        <li>o que precisa mudar antes do próximo estoque sair</li>
+                        <li>quanto sua base vaza por mês (gente que entra e sai)</li>
+                        <li>quanto custa recomeçar do zero sem perceber</li>
+                        <li>quanto lucro você deixa na mesa por não organizar a base em perfis</li>
+                        <li>e qual o próximo passo mais lógico para crescer com segurança</li>
                     </ul>
                 </div>
 
-                <div style="background: #F8FAFC; padding: 16px; border-radius: 8px; border: 1px solid #E2E8F0;">
-                    <p style="margin:0; font-size: 0.9rem; color: #64748B;">⏱️ Leva menos de 3 minutos.<br>🔒 As
-                        respostas são só suas.</p>
+                <div
+                    style="background: #F8FAFC; padding: 16px; border-radius: 8px; border: 1px solid #E2E8F0; margin-bottom: 24px;">
+                    <p style="margin:0; font-size: 1rem; color: #475569;">
+                        ERP mostra estoque.<br>
+                        Mas não decide:<br>
+                        <strong>quem merece mais responsabilidade, quem sustenta a operação, quem some e quem vira risco
+                            silencioso.</strong>
+                    </p>
                 </div>
 
                 <button class="btn-primary" onclick="nextScreen()">Iniciar diagnóstico</button>
             </div>
         </section>
 
-        <!-- TELA 0.1 — MICRO-TRANSIÇÃO -->
+        <!-- TELA 0.1 — MICRO-TRANSIÇÃO (SEGURANÇA + COMPROMISSO) -->
         <section id="screen_01_transition" data-step="0.1" class="quiz-screen">
             <div class="content-wrapper">
-                <p style="font-size: 1.3rem; font-weight: 600; color:var(--primary);">As próximas perguntas não são
-                    sobre opinião nem sobre “como você gostaria que fosse”.</p>
-                <p>Elas analisam como sua operação funciona hoje e comparam isso com padrões reais de operações que
-                    lidam com revenda e consignado.</p>
+                <p style="font-size: 1.25rem; font-weight: 600; color:var(--primary);">Isso aqui não é “quiz de
+                    curiosidade”.</p>
 
-                <hr style="border: 0; border-top: 1px solid #E2E8F0; margin: 24px 0;">
+                <p>Suas respostas vão virar contas do tipo:<br>
+                    “estou gastando X por mês só pra ficar no mesmo lugar.”</p>
 
-                <p><strong>Não existe resposta certa ou errada. Existe clareza.</strong><br>E clareza evita prejuízo
-                    silencioso.</p>
-
-                <div style="background: #EFF6FF; padding: 16px; border-radius: 8px; margin-top: 24px;">
-                    <p style="margin:0; color: var(--primary);">👉 Responda pensando na sua operação real, não no
-                        cenário ideal. Isso faz toda a diferença no resultado.</p>
-                </div>
-
-                <button class="btn-primary" onclick="nextScreen()">Continuar diagnóstico</button>
-            </div>
-        </section>
-
-        <!-- ABERTURA BLOCO 1 -->
-        <section id="screen_block1_intro" data-step="intro" class="quiz-screen">
-            <div class="content-wrapper">
-                <h1 class="headline">Antes de crescer, você precisa responder uma coisa.</h1>
-                <h2 class="subheadline">Hoje, o seu estoque trabalha para você ou você trabalha para acompanhar o
-                    estoque?</h2>
-
-                <p>Toda operação de consignado vive essa tensão:</p>
-                <ul>
-                    <li>estoque fora da empresa</li>
-                    <li>dinheiro que ainda não voltou</li>
-                    <li>decisões que precisam ser tomadas sem certeza</li>
-                </ul>
-                <p>Mesmo quando tudo parece “sob controle”.</p>
-
-                <p>Aqui não vamos falar de prejuízo. Nem de calote. Nem de erro grave. Vamos falar de controle real.
-                    Porque é o controle — ou a falta dele — que define se crescer vai te ajudar ou te cansar.</p>
-
-                <p><strong>Nas próximas perguntas, você vai perceber onde o controle começa a se perder.</strong><br>Sem
-                    julgamento. Sem teoria. Só olhando para a sua operação do jeito que ela funciona hoje.</p>
+                <p>Leva menos de 3 minutos.</p>
 
                 <button class="btn-primary" onclick="nextScreen()">Continuar</button>
             </div>
         </section>
 
-        <!-- PERGUNTA 1: CONTEXTO -->
-        <section id="screen_q1_contexto" data-step="1" class="quiz-screen">
+        <!-- BLOCO 1 — O “SIM” IMEDIATO (PESSOAS + PERFIS) -->
+        <!-- PERGUNTA 1 — O SIM IMEDIATO (PESSOAS) -->
+        <section id="screen_q1_seguranca" data-step="1" class="quiz-screen">
             <div class="content-wrapper">
-                <h3 class="question-title">Hoje, o estoque que você coloca na rua:</h3>
+                <h3 class="question-title">Hoje, quando você coloca estoque na rua, você sente segurança em quem está
+                    com ele?</h3>
                 <div class="options-grid">
-                    <button class="option-btn" onclick="selectOption(1, 'Totalmente sob controle')">Está totalmente sob
-                        controle</button>
-                    <button class="option-btn" onclick="selectOption(1, 'Mais ou menos')">Eu controlo mais ou
-                        menos</button>
-                    <button class="option-btn" onclick="selectOption(1, 'Sei quanto sai mas nao onde esta')">Eu sei
-                        quanto sai, mas não sei exatamente onde está</button>
-                    <button class="option-btn" onclick="selectOption(1, 'Nao penso nisso')">Eu prefiro não pensar muito
-                        nisso</button>
+                    <button class="option-btn" onclick="selectOption('P1_segurança_pessoas', 'Sim, na maioria')">Sim, na
+                        maioria</button>
+                    <button class="option-btn" onclick="selectOption('P1_segurança_pessoas', 'Em algumas pessoas')">Em
+                        algumas pessoas</button>
+                    <button class="option-btn" onclick="selectOption('P1_segurança_pessoas', 'Em poucas')">Em
+                        poucas</button>
+                    <button class="option-btn"
+                        onclick="selectOption('P1_segurança_pessoas', 'Não, é sempre um risco')">Não, é sempre um
+                        risco</button>
                 </div>
             </div>
         </section>
 
-        <!-- PERGUNTA 2: BASE ATIVA (Base p/ Calculos) -->
-        <section id="screen_q2_base" data-step="2" class="quiz-screen">
-            <div class="content-wrapper">
-                <h3 class="question-title">Quantas revendedoras estão com estoque neste momento?</h3>
-                <div class="options-grid">
-                    <button class="option-btn" onclick="selectOption(2, 'Ate 10', 10)">Até 10</button>
-                    <button class="option-btn" onclick="selectOption(2, '11 a 30', 20)">11 a 30</button>
-                    <button class="option-btn" onclick="selectOption(2, '31 a 70', 50)">31 a 70</button>
-                    <button class="option-btn" onclick="selectOption(2, 'Mais de 70', 80)">Mais de 70</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- PERGUNTA 3: VALOR MEDIO (Base p/ Calculos) -->
-        <section id="screen_q3_valor" data-step="3" class="quiz-screen">
-            <div class="content-wrapper">
-                <h3 class="question-title">Qual é o valor médio de estoque entregue por revendedora?</h3>
-                <div class="options-grid">
-                    <button class="option-btn" onclick="selectOption(3, 'Ate 800', 800)">Até R$ 800</button>
-                    <button class="option-btn" onclick="selectOption(3, '800 a 1500', 1200)">R$ 800 a R$ 1.500</button>
-                    <button class="option-btn" onclick="selectOption(3, '1500 a 3000', 2200)">R$ 1.500 a R$
-                        3.000</button>
-                    <button class="option-btn" onclick="selectOption(3, 'Acima de 3000', 3500)">Acima de R$
-                        3.000</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- PERGUNTA 4: TEMPO SEM GIRO -->
-        <section id="screen_q4_tempo" data-step="4" class="quiz-screen">
-            <div class="content-wrapper">
-                <h3 class="question-title">Depois que o estoque sai, em média ele leva quanto tempo para girar ou
-                    voltar?</h3>
-                <div class="options-grid">
-                    <button class="option-btn" onclick="selectOption(4, 'Ate 15 dias')">Até 15 dias</button>
-                    <button class="option-btn" onclick="selectOption(4, '16 a 30 dias')">16 a 30 dias</button>
-                    <button class="option-btn" onclick="selectOption(4, '31 a 45 dias')">31 a 45 dias</button>
-                    <button class="option-btn" onclick="selectOption(4, 'Mais de 45 dias')">Mais de 45 dias</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- PERGUNTA 5: PADRÃO DE CONTROLE -->
-        <section id="screen_q5_padrao" data-step="5" class="quiz-screen">
-            <div class="content-wrapper">
-                <h3 class="question-title">Hoje, você consegue responder essa pergunta com facilidade?</h3>
-                <p>“Se eu quiser saber agora onde está cada maleta e há quanto tempo, eu consigo?”</p>
-                <div class="options-grid">
-                    <button class="option-btn" onclick="selectOption(5, 'Sim rapidamente')">Sim, rapidamente</button>
-                    <button class="option-btn" onclick="selectOption(5, 'Da trabalho')">Consigo, mas dá
-                        trabalho</button>
-                    <button class="option-btn" onclick="selectOption(5, 'Nao com precisao')">Não com precisão</button>
-                    <button class="option-btn" onclick="selectOption(5, 'Nao')">Não</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- PERGUNTA 6: AUTORIZAÇÃO LÓGICA -->
-        <section id="screen_q6_auth" data-step="6" class="quiz-screen">
-            <div class="content-wrapper">
-                <h3 class="question-title">Se uma conta simples mostrasse quanto do seu dinheiro fica fora de controle
-                    todos os meses, isso te ajudaria a tomar decisões melhores?</h3>
-                <div class="options-grid">
-                    <button class="option-btn" onclick="selectOption(6, 'Sim')">Sim</button>
-                    <button class="option-btn" onclick="selectOption(6, 'Com certeza')">Com certeza</button>
-                    <button class="option-btn" onclick="selectOption(6, 'Talvez')">Talvez</button>
-                    <button class="option-btn" onclick="selectOption(6, 'Nao')">Não</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- INSIGHT 1: PREJUIZO -->
+        <!-- INSIGHT 1 (INTRA BLOCO) — REENQUADRAMENTO (SEM ESTOQUE) -->
         <section id="screen_insight1" data-step="insight" class="quiz-screen">
             <div class="content-wrapper">
-                <span class="insight-badge">❗ INSIGHT DE RISCO</span>
-                <h3 class="insight-title">Você não precisa tomar calote pra perder dinheiro.</h3>
-                <p>No consignado, o prejuízo não começa quando a revendedora foge. Ele começa antes.</p>
+                <span class="insight-badge">❗ O RISCO REAL</span>
+                <h3 class="insight-title">O risco não é “ter estoque na rua”.<br>É com quem ele está.</h3>
 
-                <div style="background: #F8FAFC; padding: 20px; border-radius: 8px; margin: 20px 0;">
-                    <p><strong>Funciona assim:</strong></p>
-                    <ul>
-                        <li>a revendedora vende</li>
-                        <li>o dinheiro entra na mão dela</li>
-                        <li>esse dinheiro vira “dinheiro de paisagem”</li>
-                        <li>quando chega o dia do acerto… 👉 <strong>o caixa não fecha</strong></li>
-                    </ul>
-                </div>
+                <p>Vamos deixar isso claro em termos práticos.</p>
+                <p>Mesmo com sistema, a dor real aparece quando você pensa:</p>
 
-                <p>Ela não te roubou. Ela misturou o seu dinheiro com a vida dela. Feira, mercado, boleto, aluguel. E
-                    isso acontece mesmo com revendedoras honestas.</p>
-                <button class="btn-primary" onclick="nextScreen()">Continuar diagnóstico</button>
+                <ul class="clean-list">
+                    <li>“Essa pessoa aguenta responsabilidade… ou só está empolgada hoje?”</li>
+                    <li>“Se ela sumir, eu consigo resolver rápido… ou vira novela?”</li>
+                    <li>“Eu confio porque ela é boa… ou porque eu não tenho critério repetível?”</li>
+                </ul>
+
+                <p style="font-weight:700;">📌 ERP não decide isso.<br>ERP mostra “onde está”.<br>Mas não responde “quem
+                    merece”.</p>
+
+                <p class="final-impact">Você não perde dinheiro por “não ter controle de estoque”.<br>Você perde por
+                    decidir no escuro quem segura a responsabilidade.</p>
+
+                <button class="btn-primary" onclick="nextScreen()">Continuar</button>
             </div>
         </section>
 
-        <!-- INSIGHT 2: CULPADO -->
+        <!-- PERGUNTA 2 — PERFIS (GANCHO PRINCIPAL) -->
+        <section id="screen_q2_perfis" data-step="2" class="quiz-screen">
+            <div class="content-wrapper">
+                <h3 class="question-title">Na prática, suas revendedoras se comportam como?</h3>
+                <div class="options-grid">
+                    <button class="option-btn"
+                        onclick="selectOption('P2_perfis_revendedoras', 'Algumas vendem sempre, outras somem')">Algumas
+                        vendem sempre, outras somem</button>
+                    <button class="option-btn"
+                        onclick="selectOption('P2_perfis_revendedoras', 'Poucas sustentam tudo', null, 'concentracao')">Poucas
+                        sustentam tudo</button>
+                    <button class="option-btn"
+                        onclick="selectOption('P2_perfis_revendedoras', 'Muitas entram e saem rápido')">Muitas entram e
+                        saem rápido</button>
+                    <button class="option-btn"
+                        onclick="selectOption('P2_perfis_revendedoras', 'Eu trato todo mundo igual', null, 'igual')">Eu
+                        trato todo mundo igual (e isso me cansa)</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- INSIGHT 2 (INTRA BLOCO) — “VOCÊ JÁ TEM EQUIPE HÍBRIDA” -->
         <section id="screen_insight2" data-step="insight" class="quiz-screen">
             <div class="content-wrapper">
-                <h3 class="insight-title">O culpado não é você (nem a revendedora).</h3>
-                <p>No banco, inadimplência é não pagar a parcela. No consignado, é gastar antes de acertar.</p>
+                <span class="insight-badge">💡 REVELAÇÃO</span>
+                <h3 class="insight-title">Você já vive uma Equipe Híbrida… só que sem perceber.</h3>
 
-                <p><strong>Dados de referência:</strong><br>Microcrédito tradicional: 5–6% de
-                    inadimplência.<br>Consignado mal gerido: 15% ou mais de “quebra de caixa”.</p>
+                <p>Em toda base de consignado, as pessoas se separam por comportamento. Você sempre tem:</p>
 
-                <p>Isso não aparece como calote. Aparece como: diferença pequena no acerto, atraso, “depois eu
-                    completo”. Somado no mês, vira rombo silencioso.</p>
-                <button class="btn-primary" onclick="nextScreen()">Continuar diagnóstico</button>
+                <ul class="clean-list">
+                    <li><strong>✅ Estáveis:</strong> as que seguram previsibilidade (vendem com constância, pagam certo,
+                        não somem)</li>
+                    <li><strong>✅ Empreendedoras:</strong> as que puxam crescimento (querem volume, pedem mais, fazem
+                        acontecer)</li>
+                    <li><strong>⚠️ Sprinters:</strong> as que aceleram… ou somem rápido (entram forte, depois desliga,
+                        ou vira risco)</li>
+                </ul>
+
+                <p style="margin-top:24px; font-size:1.1rem; color:#1E293B; font-weight:700;">O erro não é ter esses
+                    perfis.<br>O erro é tratar todo mundo igual.</p>
+                <p>É aqui que nasce o cansaço. Porque você tenta administrar com o mesmo tratamento pessoas que precisam
+                    de funções diferentes.</p>
+
+                <button class="btn-primary" onclick="nextScreen()">Continuar</button>
             </div>
         </section>
 
-        <!-- INSIGHT 3: MATEMATICA DO RISCO (ATUALIZADO PARA PROGRESSIVE) -->
-        <section id="screen_insight3_risk" data-step="insight" class="quiz-screen">
+        <!-- BLOCO 2 — A DOR HUMANA COM MATEMÁTICA -->
+        <!-- PERGUNTA 3 — ROTATIVIDADE -->
+        <section id="screen_q3_rotatividade" data-step="3" class="quiz-screen">
             <div class="content-wrapper">
-                <span class="insight-badge">💸 A MATEMÁTICA DO RISCO</span>
-                <h3 class="insight-title">Essa conta usa os números que você informou.</h3>
+                <h3 class="question-title">3A) Quantas revendedoras estão ativas hoje?</h3>
+                <p style="font-size:0.9rem; color:#64748B; margin-top:-16px; margin-bottom:24px;">(Ativa =
+                    vendeu/comprou nos últimos 30 dias)</p>
+                <div class="options-grid" style="margin-bottom:32px;">
+                    <button class="option-btn" onclick="setQ3Part1(10)">Até 10</button>
+                    <button class="option-btn" onclick="setQ3Part1(30)">11 a 30</button>
+                    <button class="option-btn" onclick="setQ3Part1(70)">31 a 70</button>
+                    <button class="option-btn" onclick="setQ3Part1(120)">Mais de 70</button>
+                </div>
+
+                <div id="q3_part2" style="display:none; animation:fadeInUp 0.3s ease;">
+                    <h3 class="question-title">3B) Quantas você perdeu nos últimos 30 dias?</h3>
+                    <p style="font-size:0.9rem; color:#64748B; margin-top:-16px; margin-bottom:24px;">(Perdeu = parou de
+                        rodar / devolveu e não voltou / sumiu)</p>
+                    <div class="options-grid">
+                        <button class="option-btn" onclick="selectOption('P3_vazamento_base', '0 a 1', 1)">0 a
+                            1</button>
+                        <button class="option-btn" onclick="selectOption('P3_vazamento_base', '2 a 3', 3)">2 a
+                            3</button>
+                        <button class="option-btn" onclick="selectOption('P3_vazamento_base', '4 a 7', 6)">4 a
+                            7</button>
+                        <button class="option-btn" onclick="selectOption('P3_vazamento_base', '8 ou mais', 10)">8 ou
+                            mais</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- INSIGHT 3 — CHURN É “FICAR NO MESMO LUGAR” -->
+        <section id="screen_insight3" data-step="insight" class="quiz-screen">
+            <div class="content-wrapper">
+                <span class="insight-badge">💸 VAZAMENTO MENSAL</span>
+                <h3 class="insight-title">Rotatividade parece normal… até você ver a conta.</h3>
+
+                <p>Vamos traduzir isso para o que acontece na vida real.<br>
+                    Quando gente sai, você não “perde uma pessoa”. Você ganha trabalho invisível:</p>
+
+                <ul class="clean-list">
+                    <li>conversa de novo</li>
+                    <li>explica tudo de novo</li>
+                    <li>manda catálogo de novo</li>
+                    <li>acompanha começo de novo</li>
+                    <li>e torce pra não dar errado de novo</li>
+                </ul>
+
+                <p>Isso parece “parte do jogo”. Mas é exatamente aí que o empresário trava a escala.</p>
 
                 <div class="var-cards">
-                    <div class="var-card"><label>Revendedoras</label><strong id="live_risk_qtd">...</strong></div>
-                    <div class="var-card"><label>Valor Médio</label><strong id="live_risk_val">...</strong></div>
-                    <div class="var-card"><label>Exposto</label><strong id="live_risk_total">...</strong></div>
+                    <div class="var-card"><label>Ativas</label><strong id="disp_actives">...</strong></div>
+                    <div class="var-card"><label>Saíram/Mês</label><strong id="disp_lost">...</strong></div>
                 </div>
 
                 <div class="calculation-display">
-                    <p style="color: #991B1B; margin-bottom:8px;">Se apenas 15% desse valor atrasa, volta incompleto ou
-                        vira negociação:</p>
-                    <span class="big-number count-up" data-target="0" id="live_risk_final">R$ 0,00</span>
-                    <p style="color: #991B1B; margin-top:8px;">em risco todo ciclo.</p>
+                    <p style="color:#991B1B; margin-bottom:4px;">Isso dá um vazamento aproximado de:</p>
+                    <span class="big-number" id="calc_churn_pct">0%</span>
+                    <p style="color:#991B1B; margin-top:4px;">da sua base todo mês</p>
                 </div>
 
-                <p>Não é calote. É falta de controle financeiro do fluxo.</p>
-                <button class="btn-primary" onclick="nextScreen()">Continuar diagnóstico</button>
+                <p>Quanto maior esse vazamento, mais você vira refém de reposição.<br>
+                    Você trabalha… e continua no mesmo lugar.</p>
+
+                <p style="font-size:0.8rem; color:#94A3B8; margin-top:24px;">Fonte: Reachr (Brasil, 2024/2025) +
+                    práticas de ROI de recrutamento (Gupy)</p>
+
+                <button class="btn-primary" onclick="nextScreen()">Continuar</button>
             </div>
         </section>
 
-        <!-- INSIGHT 4: ILUSAO SISTEMAS -->
+        <!-- PERGUNTA 4 — TEMPO DE RECOMEÇO -->
+        <section id="screen_q4_recomeco" data-step="4" class="quiz-screen">
+            <div class="content-wrapper">
+                <h3 class="question-title">4A) Quando uma revendedora sai, quanto tempo você/equipe gasta pra colocar
+                    outra “de pé”?</h3>
+                <p style="font-size:0.9rem; color:#64748B; margin-top:-16px; margin-bottom:24px;">(só até ela começar a
+                    rodar de verdade)</p>
+                <div class="options-grid" style="margin-bottom:32px;">
+                    <button class="option-btn" onclick="setQ4Part1(0.5)">Até 30 min</button>
+                    <button class="option-btn" onclick="setQ4Part1(1)">30 a 60 min</button>
+                    <button class="option-btn" onclick="setQ4Part1(2)">1 a 2 horas</button>
+                    <button class="option-btn" onclick="setQ4Part1(3)">Mais de 2 horas</button>
+                </div>
+
+                <div id="q4_part2" style="display:none; animation:fadeInUp 0.3s ease;">
+                    <h3 class="question-title">4B) Em média, quanto tempo uma revendedora fica ativa na sua base?</h3>
+                    <div class="options-grid">
+                        <button class="option-btn" onclick="selectOption('P4_tempo_ativo', 'Menos de 30 dias', 1)">Menos
+                            de 30 dias</button>
+                        <button class="option-btn" onclick="selectOption('P4_tempo_ativo', '1 a 3 meses', 2)">1 a 3
+                            meses</button>
+                        <button class="option-btn" onclick="selectOption('P4_tempo_ativo', '3 a 6 meses', 4.5)">3 a 6
+                            meses</button>
+                        <button class="option-btn" onclick="selectOption('P4_tempo_ativo', 'Mais de 6 meses', 8)">Mais
+                            de 6 meses</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- INSIGHT 4 — “TEMPO PERDIDO” -->
         <section id="screen_insight4" data-step="insight" class="quiz-screen">
             <div class="content-wrapper">
-                <h3 class="insight-title">A Ilusão dos Sistemas.</h3>
-                <p>Softwares mostram quanto a revendedora deve, o que saiu e o que voltou. Mas eles não impedem que o
-                    dinheiro da venda vire dinheiro da feira.</p>
-                <p>A solução tecnológica existe (maquininhas com split, contas vinculadas). Mas a maioria não aplica.
-                    Resultado? Controle aparente. Risco real.</p>
+                <span class="insight-badge">⏳ TEMPO É CANSAÇO</span>
+                <h3 class="insight-title">Esse tempo não aparece na sua planilha.<br>Mas aparece no seu cansaço.</h3>
+
+                <p>Vamos deixar isso claro em termos práticos.</p>
+                <p>Toda vez que uma revendedora sai da sua base, você precisa: responder mensagens, explicar tudo de
+                    novo, buscar outra pessoa, acompanhar os primeiros dias.</p>
+
+                <p><strong>Isso não aparece no financeiro. Mas consome o seu tempo todos os meses.</strong></p>
+
+                <div class="calculation-display">
+                    <p style="color:#991B1B;">Com base nas suas respostas, hoje você perde em média:</p>
+                    <span class="big-number" id="calc_hours_lost">0 horas</span>
+                    <p style="color:#991B1B;">por mês apenas resolvendo saída e recomeçando.</p>
+                </div>
+
+                <p>(não é venda, não é crescimento — é reposição)</p>
+
+                <div style="background: #F8FAFC; padding: 16px; border-radius: 8px; margin: 16px 0;">
+                    <p style="margin:0; font-size: 0.9rem;">
+                        <strong>Por que isso importa?</strong><br>
+                        Estudos de mercado mostram que, em média:<br>
+                        ✅ são 52,5 horas investidas por contratação<br>
+                        ✅ R$ 2.404,63 custo médio por vaga preenchida<br>
+                        <small style="color:#64748B">(Fonte: Reachr Brasil 2024/2025)</small>
+                    </p>
+                </div>
+
+                <p>No consignado, você sente isso em pequenas doses todo mês. Mas no ano, vira um rombo invisível de
+                    tempo e energia.</p>
+
                 <button class="btn-primary" onclick="nextScreen()">Continuar</button>
             </div>
         </section>
 
-        <!-- BLOCO 2: BURACO NEGRO ESTOQUE -->
-        <section id="screen_block2_intro" data-step="intro" class="quiz-screen">
+        <!-- INSIGHT 5 — “CUSTO REAL DE SUBSTITUIR GENTE” -->
+        <section id="screen_insight5" data-step="insight" class="quiz-screen">
             <div class="content-wrapper">
-                <h1 class="headline">Estoque fora do seu controle não é estoque. É risco ambulante.</h1>
-                <p>Quando o estoque sai do seu espaço físico, ele deixa de ser produto e vira informação.</p>
-                <p>Quem não controla a informação, não controla o dinheiro.</p>
+                <span class="insight-badge">🛑 CUSTO OCULTO</span>
+                <h3 class="insight-title">Substituir gente custa mais do que parece.</h3>
+
+                <p>O empresário normalmente pensa: “Se saiu uma, eu coloco outra.”</p>
+                <p>Só que isso ignora uma coisa: o custo não é só “achar outra pessoa”. É fazer essa nova pessoa virar
+                    alguém que roda.</p>
+
+                <p>Você perde: tempo, energia, previsibilidade e lucro que seria repetido.</p>
+
+                <div style="background:#FEF2F2; padding:16px; border-left:4px solid #EF4444; margin:20px 0;">
+                    <p style="font-weight:700; color:#991B1B; margin:0;">Em RH, é comum o custo real de substituir
+                        alguém ativo ficar entre 3 a 4 vezes o valor que ele gera.</p>
+                </div>
+
+                <p>No consignado, traduzindo: se uma revendedora boa sai, você não perde só “uma vendedora”. Você perde
+                    o lucro que ela geraria se ficasse.</p>
+
+                <p style="font-size:0.8rem; color:#94A3B8;">Fonte: Vagas.com + SHRM</p>
+
                 <button class="btn-primary" onclick="nextScreen()">Continuar</button>
             </div>
         </section>
 
-        <!-- B2.P2: CONFERENCIA -->
-        <section id="screen_b2_q2_conf" data-step="7" class="quiz-screen">
+        <!-- BLOCO 3 — LUCRO RETIDO (LTV) + EQUIPE HÍBRIDA -->
+        <!-- PERGUNTA 5 — LUCRO POR REVENDEDORA -->
+        <section id="screen_q5_lucro" data-step="5" class="quiz-screen">
             <div class="content-wrapper">
-                <h3 class="question-title">Hoje, como você confere uma maleta quando ela volta?</h3>
+                <h3 class="question-title">Em média, quanto uma revendedora ativa gera de lucro líquido pra você por
+                    mês?</h3>
+                <p style="font-size:0.9rem; color:#64748B; margin-top:-16px; margin-bottom:24px;">(lucro = o que sobra
+                    pra empresa depois do custo do produto)</p>
                 <div class="options-grid">
-                    <button class="option-btn" onclick="selectOption(7, 'Manual peca por peca', 40)">Confiro peça por
-                        peça, manualmente</button>
-                    <button class="option-btn" onclick="selectOption(7, 'Valor total', 15)">Confiro só o valor
-                        total</button>
-                    <button class="option-btn" onclick="selectOption(7, 'Amostragem', 10)">Confiro por
-                        amostragem</button>
-                    <button class="option-btn" onclick="selectOption(7, 'Quando da', 0)">Confiro quando dá</button>
-                    <button class="option-btn" onclick="selectOption(7, 'Sem padrao', 0)">Não tenho um padrão
-                        fixo</button>
+                    <button class="option-btn" onclick="selectOption('P5_lucro', 'Até R$ 150', 150)">Até R$ 150</button>
+                    <button class="option-btn" onclick="selectOption('P5_lucro', 'R$ 150 a R$ 400', 275)">R$ 150 a R$
+                        400</button>
+                    <button class="option-btn" onclick="selectOption('P5_lucro', 'R$ 400 a R$ 900', 650)">R$ 400 a R$
+                        900</button>
+                    <button class="option-btn" onclick="selectOption('P5_lucro', 'Acima de R$ 900', 1000)">Acima de R$
+                        900</button>
                 </div>
             </div>
         </section>
 
-        <!-- B2.P3: CARGA OPERACIONAL -->
-        <section id="screen_b2_q3_tempo" data-step="8" class="quiz-screen">
+        <!-- INSIGHT 6 — LTV (A CONTA QUE PRENDE) -->
+        <section id="screen_insight6" data-step="insight" class="quiz-screen">
             <div class="content-wrapper">
-                <h3 class="question-title">Em média, quanto tempo leva para conferir UMA maleta?</h3>
-                <div class="options-grid">
-                    <button class="option-btn" onclick="selectOption(8, 'Ate 10 min', 10)">Até 10 minutos</button>
-                    <button class="option-btn" onclick="selectOption(8, '10 a 20 min', 15)">10 a 20 minutos</button>
-                    <button class="option-btn" onclick="selectOption(8, '20 a 40 min', 30)">20 a 40 minutos</button>
-                    <button class="option-btn" onclick="selectOption(8, 'Mais de 40 min', 45)">Mais de 40
-                        minutos</button>
-                    <button class="option-btn" onclick="selectOption(8, 'Nunca medi', 30)">Nunca medi isso</button>
-                </div>
-            </div>
-        </section>
+                <span class="insight-badge">💰 LTV FUTURO</span>
+                <h3 class="insight-title">Quanto uma revendedora realmente vale para o seu negócio.</h3>
 
-        <!-- B2.INSIGHT 1: TEMPO (ATUALIZADO CARDS) -->
-        <section id="screen_b2_insight1" data-step="insight" class="quiz-screen">
-            <div class="content-wrapper">
-                <span class="insight-badge">⏱️ CÁLCULO DE ROTINA</span>
-                <h3 class="insight-title">Vamos fazer uma conta simples.</h3>
+                <p>Uma revendedora não vale só o que ela vende hoje. Ela vale: quanto ela te dá de lucro por mês E por
+                    quanto tempo ela permanece ativa.</p>
 
                 <div class="var-cards">
-                    <div class="var-card"><label>Tempo/Maleta</label><strong id="live_time_bag">...</strong></div>
-                    <div class="var-card"><label>Devoluções</label><strong>10</strong></div>
+                    <div class="var-card"><label>Lucro/Mês</label><strong id="disp_profit">...</strong></div>
+                    <div class="var-card"><label>Retenção</label><strong id="disp_retention">...</strong></div>
                 </div>
 
-                <div class="calculation-display" style="padding:16px;">
-                    <p style="margin:0; color:#991B1B;">Se 10 revendedoras devolvem maleta no mesmo dia:</p>
-                    <span class="big-number" id="live_time_calc">X horas</span>
-                    <p style="margin:0; color:#991B1B;">em um único dia.</p>
+                <div class="calculation-display">
+                    <p>Isso significa que cada revendedora que sai cedo leva com ela:</p>
+                    <span class="big-number" style="color:var(--success); font-size:1.8rem;" id="calc_ltv">R$
+                        0,00</span>
+                    <p style="color:var(--success); margin-top:4px;">em lucro que nunca mais volta.</p>
                 </div>
-                <p>Agora pense em um mês. Isso não é exceção. Isso é rotina invisível.</p>
+                <p style="font-size:0.9rem; color:#64748B; text-align:center;">(não é prejuízo imediato — é dinheiro que
+                    deixa de existir)</p>
+
+                <div class="calculation-display" style="background:#FEF2F2; border-color:#FECACA;">
+                    <p style="color:#991B1B;">Se <span id="disp_lost_text">X</span> revendedoras saem por mês, você
+                        perde:</p>
+                    <span class="big-number" id="calc_lost_profit_yr" style="font-size:2rem;">R$ 0,00 /ano</span>
+                    <p style="color:#991B1B; font-size:0.9rem;">em lucro que sua operação não consegue reter</p>
+                </div>
+
+                <p style="margin-top:20px; font-weight:700;">📌 Sem vender menos. Sem errar no produto. Apenas por não
+                    conseguir fazer as pessoas ficarem.</p>
+
+                <p style="font-size:0.8rem; color:#94A3B8;">Fonte: lógica de ROI de retenção e recrutamento (Gupy)</p>
+
                 <button class="btn-primary" onclick="nextScreen()">Continuar</button>
             </div>
         </section>
 
-        <!-- B2.T5: PROBLEMA REAL -->
-        <section id="screen_b2_problemareal" data-step="insight" class="quiz-screen">
+        <!-- INSIGHT 7 — GRANDES PLAYERS -->
+        <section id="screen_insight7" data-step="insight" class="quiz-screen">
             <div class="content-wrapper">
-                <h3 class="insight-title">O problema não é o tempo. É o que o tempo esconde.</h3>
-                <p>Quanto mais manual é a conferência, maior a chance de erro, troca de peça ou “isso já estava assim”.
-                </p>
-                <p>Sem padrão forte, a palavra do empresário vale o mesmo que a da revendedora.</p>
+                <h3 class="insight-title">Operações grandes não crescem tratando todo mundo igual.</h3>
+
+                <p>Quem escala rede aprende uma coisa: revendedora não é “uma pessoa”. É um comportamento.</p>
+
+                <div style="background: #F1F5F9; padding: 16px; border-radius: 8px; margin-bottom:16px;">
+                    <p style="margin:0; font-size:0.9rem;">
+                        <strong>Grupo Boticário / Eudora:</strong> usam CRM e inteligência para ativar quem responde e
+                        não desperdiçar energia em quem não reage.<br><br>
+                        <strong>Rommanel:</strong> força profissionalização e aumenta retenção pelo peso do “título” e
+                        pela estrutura.<br><br>
+                        <strong>Hope:</strong> investiu forte em tecnologia e processo para reduzir erro de compromisso
+                        e aumentar previsibilidade.
+                    </p>
+                </div>
+
+                <p>A lição é simples: <strong>segmentar perfis não é frescura. É proteção de lucro.</strong></p>
+
                 <button class="btn-primary" onclick="nextScreen()">Continuar</button>
             </div>
         </section>
 
-        <!-- B2.T6: INSIGHT 2 -->
-        <section id="screen_b2_insight2" data-step="insight" class="quiz-screen">
+        <!-- BLOCO 4 — FEELING / FORMULÁRIO / SCORE -->
+        <!-- PERGUNTA 6 — MÉTODO ATUAL -->
+        <section id="screen_q6_metodo" data-step="6" class="quiz-screen">
             <div class="content-wrapper">
-                <h3 class="insight-title">Quanto mais você cresce, menos você vê.</h3>
-                <p>Com 5 revendedoras, dá pra “sentir” o controle. Com 50, isso vira ilusão. Com 200, vira loteria.</p>
-                <p><strong>Crescer sem sistema não multiplica lucro. Multiplica risco.</strong></p>
-                <button class="btn-primary" onclick="nextScreen()">Continuar</button>
-            </div>
-        </section>
-
-        <!-- CONEXAO MECANISMO -->
-        <section id="screen_conexao_mecanismo" data-step="insight" class="quiz-screen">
-            <div class="content-wrapper">
-                <h3 class="insight-title">Percebe o padrão?</h3>
-                <p>Você: entrega estoque, depois confere, depois cobra, depois corrige. Tudo depois do risco.</p>
-                <p>👉 <strong>Operações previsíveis fazem o oposto:</strong> controlam antes, decidem antes, liberam
-                    depois.</p>
-                <button class="btn-primary" onclick="nextScreen()">Avançar para o próximo bloco</button>
-            </div>
-        </section>
-
-        <!-- BLOCO 3: DOR HUMANA -->
-        <section id="screen_block3_intro" data-step="intro" class="quiz-screen">
-            <div class="content-wrapper">
-                <h1 class="headline">O maior problema do consignado não é vender. É fazer alguém ficar.</h1>
-                <p>No consignado, entrar é fácil. Sair é mais fácil ainda. Quem não tem compromisso real, desiste na
-                    primeira dificuldade.</p>
-                <button class="btn-primary" onclick="nextScreen()">Continuar</button>
-            </div>
-        </section>
-
-        <!-- B3.T2: REALIDADE -->
-        <section id="screen_b3_q2" data-step="9" class="quiz-screen">
-            <div class="content-wrapper">
-                <h3 class="question-title">Em média, quanto tempo uma revendedora fica ativa na sua base?</h3>
+                <h3 class="question-title">Como você decide quem recebe mais estoque / mais responsabilidade?</h3>
                 <div class="options-grid">
-                    <button class="option-btn" onclick="selectOption(9, 'Menos de 30 dias')">Menos de 30 dias</button>
-                    <button class="option-btn" onclick="selectOption(9, '1 a 3 meses')">1 a 3 meses</button>
-                    <button class="option-btn" onclick="selectOption(9, '3 a 6 meses')">3 a 6 meses</button>
-                    <button class="option-btn" onclick="selectOption(9, 'Mais de 6 meses')">Mais de 6 meses</button>
-                    <button class="option-btn" onclick="selectOption(9, 'Nunca medi')">Nunca medi isso</button>
+                    <button class="option-btn"
+                        onclick="selectOption('P6_metodo_decisao', 'Feeling / conversa', null, 'feeling')">Feeling /
+                        conversa</button>
+                    <button class="option-btn"
+                        onclick="selectOption('P6_metodo_decisao', 'Histórico informal', null, 'feeling')">Histórico
+                        informal (“acho que ela é boa”)</button>
+                    <button class="option-btn"
+                        onclick="selectOption('P6_metodo_decisao', 'Sistema + intuição', null, 'sistema')">Sistema +
+                        intuição</button>
+                    <button class="option-btn"
+                        onclick="selectOption('P6_metodo_decisao', 'Não tenho critério claro', null, 'sem_criterio')">Não
+                        tenho critério claro (decido no dia)</button>
                 </div>
             </div>
         </section>
 
-        <!-- B3.T3: ESFORCO INVISIVEL -->
-        <section id="screen_b3_q3" data-step="10" class="quiz-screen">
+        <!-- INSIGHT 8 — O SOCÃO: “DECIDE CEDO DEMAIS” -->
+        <section id="screen_insight8" data-step="insight" class="quiz-screen">
             <div class="content-wrapper">
-                <h3 class="question-title">Quando uma revendedora sai, o que acontece?</h3>
-                <div class="options-grid">
-                    <button class="option-btn" onclick="selectOption(10, 'Recruto outra')">Recruto outra</button>
-                    <button class="option-btn" onclick="selectOption(10, 'Recomeco processo')">Recomeço o
-                        processo</button>
-                    <button class="option-btn" onclick="selectOption(10, 'Treino de novo')">Treino de novo</button>
-                    <button class="option-btn" onclick="selectOption(10, 'Explico tudo')">Explico tudo de novo</button>
-                </div>
-            </div>
-        </section>
+                <span class="insight-badge">⚠️ ALERTA DE MÉTODO</span>
+                <h3 class="insight-title">Você não decide errado.<br>Você decide cedo demais.</h3>
 
-        <!-- B3.T4: INSIGHT 1 -->
-        <section id="screen_b3_insight1" data-step="insight" class="quiz-screen">
-            <div class="content-wrapper">
-                <h3 class="insight-title">O problema não é a revendedora desistir. É você precisar recomeçar sempre.
-                </h3>
-                <p>Cada saída significa: novo recrutamento, novo tempo, novo risco, novo desgaste.</p>
-                <p>Isso não aparece no financeiro. Mas destrói a escala.</p>
-                <button class="btn-primary" onclick="nextScreen()">Continuar</button>
-            </div>
-        </section>
-
-        <!-- B3.T5: INSIGHT 2 -->
-        <section id="screen_b3_insight2" data-step="insight" class="quiz-screen">
-            <div class="content-wrapper">
-                <h3 class="insight-title">O consignado cria um efeito colateral perigoso.</h3>
-                <p>Como não exige investimento inicial: não cria compromisso, não cria rotina, não cria profissão.</p>
-                <p>Para muita gente, vira: “vou tentar… se der, deu.” Isso não é culpa da pessoa. É do modelo sem
-                    filtro.</p>
-                <button class="btn-primary" onclick="nextScreen()">Continuar</button>
-            </div>
-        </section>
-
-        <!-- B3.T6: INSIGHT 3 -->
-        <section id="screen_b3_insight3" data-step="insight" class="quiz-screen">
-            <div class="content-wrapper">
-                <h3 class="insight-title">Existe um teto invisível no consignado.</h3>
-                <p>Um empresário sozinho consegue até 30–50 revendedoras no controle manual. Acima disso: cobrança vira
-                    caos, estoque vira ruído, retenção despenca.</p>
-                <p>É nessa fase que muita operação quebra.</p>
-                <button class="btn-primary" onclick="nextScreen()">Continuar</button>
-            </div>
-        </section>
-
-        <!-- BLOCO 4: ERRO DE DECIDIR -->
-        <section id="screen_block4_intro" data-step="intro" class="quiz-screen">
-            <div class="content-wrapper">
-                <h1 class="headline">Você não decide errado. Você decide com pouca informação.</h1>
-                <p>A maioria dos empresários tenta se proteger usando formulário, conversa, score ou intuição.</p>
-                <p>O problema não é usar isso. O problema é achar que isso prevê comportamento.</p>
-                <button class="btn-primary" onclick="nextScreen()">Continuar</button>
-            </div>
-        </section>
-
-        <!-- B4.T2: REALIDADE -->
-        <section id="screen_b4_q2" data-step="11" class="quiz-screen">
-            <div class="content-wrapper">
-                <h3 class="question-title">Hoje, o que mais pesa na sua decisão de liberar estoque?</h3>
-                <div class="options-grid">
-                    <button class="option-btn" onclick="selectOption(11, 'Conversa')">Conversa / impressão</button>
-                    <button class="option-btn" onclick="selectOption(11, 'Formulario')">Formulário preenchido</button>
-                    <button class="option-btn" onclick="selectOption(11, 'Score')">Score / CPF</button>
-                    <button class="option-btn" onclick="selectOption(11, 'Indicacao')">Indicação</button>
-                    <button class="option-btn" onclick="selectOption(11, 'Tudo')">Um pouco de tudo</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- B4.T3: INSIGHT FORM -->
-        <section id="screen_b4_insight1" data-step="insight" class="quiz-screen">
-            <div class="content-wrapper">
-                <h3 class="insight-title">Formulário mede intenção. Não mede atitude.</h3>
-                <p>No formulário, todo mundo: diz que vai vender, diz que precisa de renda, diz que é responsável.</p>
-                <p>Preencher não exige esforço. Não exige compromisso. Por isso, empresas que dependem de execução não
-                    usam formulário como critério principal.</p>
-                <button class="btn-primary" onclick="nextScreen()">Continuar</button>
-            </div>
-        </section>
-
-        <!-- B4.T4: INSIGHT SCORE -->
-        <section id="screen_b4_insight2" data-step="insight" class="quiz-screen">
-            <div class="content-wrapper">
-                <h3 class="insight-title">Score mede passado financeiro. Não mede comportamento no consignado.</h3>
-                <p>Score ajuda banco. Não ajuda a prever rotina, disciplina ou compromisso.</p>
-                <p>Por isso operações com força de vendas não liberam responsabilidade com base em score.</p>
-                <button class="btn-primary" onclick="nextScreen()">Continuar</button>
-            </div>
-        </section>
-
-        <!-- B4.T5: INSIGHT FEELING -->
-        <section id="screen_b4_insight3" data-step="insight" class="quiz-screen">
-            <div class="content-wrapper">
-                <h3 class="insight-title">Feeling funciona… até você precisar escalar.</h3>
-                <p>Com poucas pessoas, o feeling ajuda. Com muitas, vira sorte.</p>
-                <p>Feeling não é método. É percepção individual — e não escala.</p>
-                <button class="btn-primary" onclick="nextScreen()">Continuar</button>
-            </div>
-        </section>
-
-        <!-- B4.T6: REFERENCIAS -->
-        <section id="screen_b4_referencias" data-step="insight" class="quiz-screen">
-            <div class="content-wrapper">
-                <h3 class="insight-title">Por que grandes operações não decidem assim?</h3>
-                <p>Pesquisas clássicas (Frank Schmidt & John Hunter) mostram que:</p>
+                <p>O feeling não é “ruim”. Ele só tem um limite:</p>
                 <ul>
-                    <li>entrevistas e formulários → baixa capacidade de prever desempenho</li>
-                    <li>testes de ação e comportamento → previsões muito mais confiáveis</li>
+                    <li>✅ com pouca gente, ele funciona</li>
+                    <li>❌ com muita gente, ele vira sorte</li>
                 </ul>
-                <p>É por isso que empresas como Amazon e Salesforce avaliam pessoas pelo que fazem, não pelo que
-                    prometem.</p>
+
+                <p>E quando vira sorte… você descobre depois. Só que depois o risco já foi assumido.</p>
+
                 <button class="btn-primary" onclick="nextScreen()">Continuar</button>
             </div>
         </section>
 
-        <!-- B4.T7: REENQUADRAMENTO -->
-        <section id="screen_b4_reenquadramento" data-step="insight" class="quiz-screen">
+        <!-- INSIGHT 9 — FORMULÁRIO E SCORE -->
+        <section id="screen_insight9" data-step="insight" class="quiz-screen">
             <div class="content-wrapper">
-                <h3 class="insight-title">O erro não é escolher mal as pessoas. É escolher cedo demais.</h3>
-                <p>Você decide tudo antes de ver a pessoa agir. Depois que o estoque sai: o risco já foi assumido, o
-                    controle já foi perdido.</p>
-                <button class="btn-primary" onclick="nextScreen()">Avançar para o próximo bloco</button>
-            </div>
-        </section>
+                <h3 class="insight-title">Formulário mede promessa.<br>Score mede passado.<br>Consignado exige atitude.
+                </h3>
 
-        <!-- BLOCO 5: RECRUTAR UM POR VEZ -->
-        <section id="screen_block5_intro" data-step="intro" class="quiz-screen">
-            <div class="content-wrapper">
-                <h1 class="headline">Recrutar uma pessoa por vez parece controle. Na prática, é cegueira.</h1>
-                <p>Quando você recruta uma revendedora por vez: você não compara, não mede e decide no isolamento.</p>
-                <p>E decisão isolada aumenta erro.</p>
+                <p>Qualquer um diz que vai vender, é responsável e precisa de renda. No formulário isso é fácil.</p>
+
+                <p>Só que no consignado, o que decide é: <strong>rotina, constância e resposta quando dá
+                        trabalho.</strong></p>
+
+                <p>Score ajuda banco. Mas não mede disciplina.</p>
+
                 <button class="btn-primary" onclick="nextScreen()">Continuar</button>
             </div>
         </section>
 
-        <!-- B5.T2: REALIDADE -->
-        <section id="screen_b5_q2" data-step="12" class="quiz-screen">
+        <!-- INSIGHT 10 — PROVA COM REFERÊNCIA -->
+        <section id="screen_insight10" data-step="insight" class="quiz-screen">
             <div class="content-wrapper">
-                <h3 class="question-title">Hoje, como você costuma recrutar?</h3>
-                <div class="options-grid">
-                    <button class="option-btn" onclick="selectOption(12, 'Uma por vez')">Uma candidata por vez</button>
-                    <button class="option-btn" onclick="selectOption(12, 'Conforme chega')">Conforme chegam os
-                        contatos</button>
-                    <button class="option-btn" onclick="selectOption(12, 'Indicacao')">Quando alguém indica</button>
-                    <button class="option-btn" onclick="selectOption(12, 'Sem padrao')">Sem padrão fixo</button>
-                </div>
+                <span class="insight-badge">🔬 A CIÊNCIA DIZ:</span>
+                <h3 class="insight-title">Por isso “teste de ação” ganha de conversa.</h3>
+
+                <p>A meta-análise de Schmidt & Hunter (1998, atualizada em 2016) mostrou que:</p>
+
+                <ul class="clean-list">
+                    <li>entrevistas e formulários têm baixa capacidade de prever desempenho</li>
+                    <li>testes de ação/comportamento são muito mais confiáveis</li>
+                </ul>
+
+                <p>É por isso que operação séria decide pelo que a pessoa faz — não pelo que ela diz.</p>
+
+                <button class="btn-primary" onclick="showCalculatingScreen()">Ver resultado completo</button>
             </div>
         </section>
 
-        <!-- B5.T3: INSIGHT 1 -->
-        <section id="screen_b5_insight1" data-step="insight" class="quiz-screen">
-            <div class="content-wrapper">
-                <h3 class="insight-title">Sem comparação, não existe critério.</h3>
-                <p>Se você analisa uma pessoa só, qualquer comportamento parece aceitável. Não porque é bom. Mas porque
-                    não existe contraste.</p>
-                <button class="btn-primary" onclick="nextScreen()">Continuar</button>
-            </div>
-        </section>
-
-        <!-- B5.T4: INSIGHT 2 -->
-        <section id="screen_b5_insight2" data-step="insight" class="quiz-screen">
-            <div class="content-wrapper">
-                <h3 class="insight-title">Recrutar um por vez consome mais tempo do que parece.</h3>
-                <p>Cada nova candidata exige: conversa, explicação, repetição, decisão emocional.</p>
-                <p>Isso não escala. Isso cansa.</p>
-                <button class="btn-primary" onclick="nextScreen()">Continuar</button>
-            </div>
-        </section>
-
-        <!-- B5.T7: REENQUADRAMENTO -->
-        <section id="screen_b5_reenquadramento" data-step="insight" class="quiz-screen">
-            <div class="content-wrapper">
-                <h3 class="insight-title">O erro não é recrutar mal. É recrutar no escuro.</h3>
-                <p>Quando você vê uma pessoa agir sozinha, não sabe se ela é boa ou só melhor que ninguém.</p>
-                <p>Sem comparação, não existe decisão segura.</p>
-                <button class="btn-primary" onclick="showCalculatingScreen()">Ver diagnóstico completo</button>
-            </div>
-        </section>
-
-        <!-- NEW TELA CALCULANDO -->
+        <!-- TELA DE CÁLCULO (LOADING ANIMADO) -->
         <section id="screen_calculating" class="quiz-screen">
-            <div class="content-wrapper">
-                <h1 class="headline" style="font-size: 1.5rem; margin-bottom: 0;">Calculando os riscos da sua
-                    operação...</h1>
-                <p class="subheadline" style="margin-top: 8px;">Analisando suas respostas...</p>
+            <div class="content-wrapper" style="text-align:center; padding: 48px 24px;">
+                <h2 class="headline" style="font-size: 1.5rem; margin-bottom: 24px;">Calculando os riscos reais da sua
+                    operação…</h2>
 
                 <div class="calc-progress-wrapper">
                     <div class="calc-progress-fill" id="calc_fill"></div>
                 </div>
 
-                <div class="calc-steps" id="calc_text_step"></div>
+                <div class="calc-steps" id="calc_text_step"
+                    style="height:40px; margin-top:16px; color:var(--text-muted); font-weight:600;">
+                    medindo sua base que vaza…
+                </div>
             </div>
         </section>
 
-        <!-- RESULTADO -->
+        <!-- TELA DE RESULTADO — 100% COERENTE -->
         <section id="screen_result" data-step="result" class="quiz-screen">
             <div class="content-wrapper">
-                <div class="result-box">
-                    <p style="color:#1E293B; font-weight:700;">DIAGNÓSTICO PERSONALIZADO:</p>
-                    <h1 class="headline" id="result_title" style="color: var(--primary);">Empresário em Construção</h1>
-                    <div id="result_text"></div>
+                <div class="result-header">
+                    <p
+                        style="text-transform:uppercase; color:#64748B; font-size:0.85rem; letter-spacing:1px; margin-bottom:8px; font-weight:700;">
+                        Seu Perfil de Empresário</p>
+                    <h1 class="headline" id="result_profile_title" style="color:var(--primary); margin-bottom:16px;">...
+                    </h1>
+                    <div style="width:100%; height:1px; background:#E2E8F0; margin-bottom:24px;"></div>
                 </div>
 
-                <!-- New Visuals in Result -->
-                <div class="visual-scorecard">
-                    <div class="score-row"><span>Risco Financeiro</span> <span class="badge-status badge-bad"
-                            id="score_risk">ALTO</span></div>
-                    <div class="score-row"><span>Controle Operacional</span> <span class="badge-status badge-mid"
-                            id="score_control">ATENÇÃO</span></div>
-                    <div class="score-row"><span>Escalabilidade</span> <span class="badge-status badge-mid"
-                            id="score_scale">AJUSTÁVEL</span></div>
+                <div class="result-block">
+                    <h3 class="insight-title" style="font-size:1.25rem;">Diagnóstico:</h3>
+                    <div id="result_diagnosis_text">...</div>
                 </div>
 
-                <div class="good-news-box">
-                    <h3 style="font-size: 1.1rem; color: #065F46;">A boa notícia</h3>
-                    <p id="result_good_news" style="color: #064E3B; margin:0;"></p>
+                <!-- 3 NUMEROS QUE DOEM -->
+                <div class="result-math-block"
+                    style="background:#F8FAFC; padding:20px; border-radius:12px; margin:24px 0;">
+                    <h3 style="font-size:1rem; color:#475569; margin-bottom:16px;">O que seus números mostram hoje:</h3>
+
+                    <div class="math-row">
+                        <span>Saída mensal de revendedoras</span>
+                        <strong style="color:var(--danger);" id="result_churn">...</strong>
+                    </div>
+                    <div class="math-row">
+                        <span>Tempo perdido repondo/mês</span>
+                        <strong style="color:var(--danger);" id="result_time">...</strong>
+                    </div>
+                    <div class="math-row">
+                        <span>Lucro que não fica/ano</span>
+                        <strong style="color:var(--danger);" id="result_lost_money">...</strong>
+                    </div>
                 </div>
 
-                <button class="btn-primary" onclick="nextScreen()">Como resolver isso</button>
+                <div class="result-block">
+                    <h3 class="insight-title" style="font-size:1.25rem;">Sua Equipe Híbrida Ideal:</h3>
+                    <ul class="clean-list" id="result_hybrid_team">
+                        <!-- Dynamic content -->
+                    </ul>
+                </div>
+
+                <div class="result-block" style="margin-top:32px;">
+                    <h3 class="insight-title" style="font-size:1.25rem;">Seu Próximo Passo Lógico:</h3>
+                    <p id="result_next_step">...</p>
+                </div>
+
+                <!-- BLOCO FINAL COMUM -->
+                <div
+                    style="background:#EFF6FF; padding:20px; border-radius:12px; margin-top:32px; border:1px solid #DBEAFE;">
+                    <p style="margin:0; color:#1E3A8A; font-weight:500;">
+                        Um padrão ficou claro:<br>
+                        • o risco nasce antes da venda<br>
+                        • o prejuízo começa na decisão errada, não no “calote”<br>
+                        • e sem Equipe Híbrida organizada, você paga para recomeçar
+                    </p>
+                </div>
+
+                <button class="btn-primary" id="result_cta_button" onclick="nextScreen()">...</button>
             </div>
         </section>
 
-        <!-- CONEXAO FINAL -->
-        <section id="screen_conexao_final" data-step="offer" class="quiz-screen">
-            <div class="content-wrapper">
-                <h3 class="insight-title">Até aqui, você não respondeu perguntas por curiosidade.</h3>
-                <p>Você acabou de ver onde o risco nasce na sua operação. O erro acontece antes de colocar estoque na
-                    rua.</p>
-                <p>Você tem duas opções: continuar decidindo no feeling e absorvendo risco, ou organizar o processo
-                    antes com critério simples.</p>
-                <button class="btn-primary" onclick="nextScreen()">Ver a solução</button>
-            </div>
-        </section>
-
-        <!-- OFERTA FINAL (MINI LP) -->
+        <!-- TELA FINAL — OFERTA DIRETA (MINI LP) -->
         <section id="screen_offer" data-step="offer" class="quiz-screen">
-            <div class="content-wrapper" style="background:transparent; padding:0; box-shadow:none;">
+            <!-- Full width scrollable content -->
+            <div class="offer-container">
 
-                <!-- Headline -->
-                <div class="offer-box" style="text-align:center;">
-                    <h1 class="headline" style="color: var(--primary);">Você não precisa vender mais.<br>Você precisa
-                        colocar estoque nas mãos certas.</h1>
-                    <h2 class="subheadline">Com base nas suas respostas, ficou claro que seu problema é decisão antes do
-                        estoque sair.</h2>
+                <!-- HERO OFFER -->
+                <div class="offer-section">
+                    <h1 class="headline" style="text-align:center; color:#0F172A;">Você não precisa vender mais.<br>Você
+                        precisa colocar responsabilidade nas mãos certas.</h1>
+                    <h2 class="subheadline" style="text-align:center;">Com base nas suas respostas, ficou claro:<br>o
+                        problema não é produto, tráfego ou preço.<br>👉 É decisão antes do risco.</h2>
                 </div>
 
-                <!-- Aha -->
-                <div class="offer-box">
-                    <h3 class="insight-title">A maioria das operações tenta crescer assim:</h3>
-                    <ul>
-                        <li>coloca mais estoque na rua</li>
+                <!-- REENQUADRAMENTO -->
+                <div class="offer-section accent-bg">
+                    <h3 class="offer-title" style="color:white !important;">A maioria tenta crescer assim:</h3>
+                    <ul class="offer-list">
+                        <li>coloca mais maleta na rua</li>
                         <li>confia no feeling</li>
                         <li>resolve depois</li>
                     </ul>
-                    <p style="margin-top:24px;"><strong>Operações que escalam com segurança fazem o oposto:</strong>
-                        filtram antes, testam comportamento e decidem com critério. É isso que separa crescimento de
-                        prejuízo silencioso.</p>
+
+                    <h3 class="offer-title" style="margin-top:32px; color:white !important;">Operações que crescem com
+                        segurança fazem o oposto:</h3>
+                    <ul class="offer-list check-list">
+                        <li>filtram antes</li>
+                        <li>testam comportamento</li>
+                        <li>decidem com critério</li>
+                    </ul>
+
+                    <p style="margin-top:24px; text-align:center; font-weight:700;">👉 É isso que separa crescimento de
+                        desgaste.</p>
                 </div>
 
-                <!-- Visuals #2 in Offer -->
-                <div class="offer-box">
-                    <h3 class="insight-title" style="font-size:1.2rem; margin-bottom:24px;">Sua operação hoje
-                        (Estimativa)</h3>
-
-                    <!-- Donut -->
-                    <div class="visual-donut-container">
-                        <div class="visual-donut" id="visual_donut"
-                            style="background: conic-gradient(var(--danger) 0deg 270deg, var(--success) 270deg 360deg);">
-                        </div>
-                        <div class="donut-center-text">
-                            <strong id="visual_donut_pct">75%</strong>
-                            <span>Fora de<br>Controle</span>
-                        </div>
-                    </div>
-                    <div class="visual-legend">
-                        <div class="legend-item"><span style="background:var(--danger)"></span> Fora de Controle</div>
-                        <div class="legend-item"><span style="background:var(--success)"></span> Sob Controle</div>
-                    </div>
-
-                    <!-- Bar -->
-                    <div class="visual-bar-container">
-                        <div class="visual-bar-label"><span>Seu Risco</span> <strong id="visual_bar_risk_val">R$
-                                0,00</strong></div>
-                        <div class="visual-bar-track">
-                            <div class="visual-bar-fill fill-risk" id="visual_bar_risk_fill" style="width:80%"></div>
-                        </div>
-
-                        <div class="visual-bar-label"><span>Padrão Saudável</span> <strong>R$ 0,00</strong></div>
-                        <div class="visual-bar-track">
-                            <div class="visual-bar-fill fill-safe" style="width:20%"></div>
-                        </div>
-                    </div>
+                <!-- TRANSIÇÃO -->
+                <div class="offer-section" style="text-align:center;">
+                    <p style="font-size:1.1rem; font-weight:500;">E isso não exige vender mais.<br>Exige decidir melhor
+                        antes de assumir risco.</p>
                 </div>
 
-                <!-- What it is -->
-                <div class="offer-box">
-                    <h3 style="color:#0F172A; text-align:center;">Sistema de Auditoria e Recrutamento em Escala</h3>
-                    <p style="text-align:center;">Um sistema simples para você saber onde seu dinheiro está travado e
-                        decidir quem recebe estoque sem usar feeling.</p>
-                </div>
-
-                <!-- Deliverables -->
-                <div class="offer-box">
-                    <h3 class="insight-title" style="font-size:1.2rem;">O que você recebe</h3>
-                    <ul class="feature-list">
-                        <li>✅ <strong>Scanner de Lucro Perdido</strong>:<br>Diagnóstico rápido para identificar estoque
-                            improdutivo.</li>
-                        <li>✅ <strong>Ritual DNA-X</strong>:<br>Testes simples de ação para eliminar risco antes do
-                            prejuízo.</li>
-                        <li>✅ <strong>Recrutamento Relâmpago</strong>:<br>Painel coletivo para selecionar 5 a 10
-                            candidatas.</li>
-                        <li>✅ <strong>Matriz de Decisão</strong>:<br>Sistema claro que define quem entra e com quanto.
-                        </li>
+                <!-- O QUE É -->
+                <div class="offer-card main-offer-card">
+                    <p
+                        style="text-transform:uppercase; letter-spacing:1px; color:var(--primary); font-weight:700; font-size:0.8rem; margin-bottom:8px;">
+                        O QUE É ISSO</p>
+                    <h2 style="font-size:1.5rem; font-weight:800; color:#0F172A; margin-bottom:16px;">Sistema de
+                        Auditoria e Recrutamento em Escala para Consignado</h2>
+                    <p>Um sistema simples para você:</p>
+                    <ul class="offer-list">
+                        <li>enxergar onde sua base está vazando</li>
+                        <li>decidir quem recebe responsabilidade sem pena</li>
+                        <li>selecionar várias revendedoras de uma vez</li>
+                        <li>reduzir risco antes que vire desgaste</li>
                     </ul>
                 </div>
 
-                <!-- Who -->
-                <div class="offer-box">
-                    <h3 class="insight-title" style="font-size:1.2rem;">Para quem isso faz sentido</h3>
-                    <ul>
-                        <li>trabalha com consignado ou modelo híbrido</li>
-                        <li>sente que o estoque “some” na base</li>
-                        <li>perde tempo cobrando ou conferindo</li>
-                        <li>tem medo de crescer e perder controle</li>
-                    </ul>
+                <!-- DELIVERABLES -->
+                <div class="offer-section">
+                    <h3 class="offer-title" style="text-align:center; margin-bottom:32px;">O QUE VOCÊ RECEBE (CLAREZA
+                        ABSOLUTA)</h3>
+
+                    <div class="deliverable-item">
+                        <h4>✔ Scanner de Lucro Perdido</h4>
+                        <p>Diagnóstico para enxergar vazamento e risco oculto.</p>
+                    </div>
+
+                    <div class="deliverable-item">
+                        <h4>✔ Ritual DNA-X (Filtro Comportamental)</h4>
+                        <p>Testes simples de ação para eliminar perfil de risco antes do prejuízo.</p>
+                    </div>
+
+                    <div class="deliverable-item">
+                        <h4>✔ Recrutamento Relâmpago</h4>
+                        <p>Painel coletivo para comparar candidatas e selecionar 5 a 10 em minutos.</p>
+                    </div>
+
+                    <div class="deliverable-item">
+                        <h4>✔ Matriz de Decisão</h4>
+                        <p>Regra clara que define automaticamente: quem entra, quanto recebe e qual nível de risco.</p>
+                    </div>
+
+                    <div style="text-align:center; margin-top:24px; color:#64748B; font-weight:600;">
+                        📌 Sem teoria. 📌 Sem motivação. 📌 Só processo aplicável.
+                    </div>
                 </div>
 
-                <!-- Value/Urgency -->
-                <div class="offer-box" style="background: #FEF3C7; border-color: #FDE68A; color: #92400E;">
-                    <p><strong>A conta é simples:</strong> Se você recuperar uma única maleta mal alocada, esse sistema
-                        já se paga várias vezes.</p>
+                <!-- ROI -->
+                <div class="offer-card roi-card">
+                    <h3 style="color:#92400E; font-size:1.2rem; margin-bottom:16px; text-align:center;">💥 A CONTA FECHA
+                        SOZINHA</h3>
+                    <p style="text-align:center; font-weight:600;">Vamos traduzir sua própria matemática em decisão.</p>
+                    <p style="text-align:center;">Você acabou de ver que hoje sua operação:</p>
+
+                    <div class="roi-stats">
+                        <div class="roi-stat">
+                            <strong id="roi_churn">...</strong>
+                            <span>de base/mês</span>
+                        </div>
+                        <div class="roi-stat">
+                            <strong id="roi_hours">...</strong>
+                            <span>horas/mês repondo</span>
+                        </div>
+                    </div>
+
+                    <div style="text-align:center; margin-top:16px;">
+                        <strong style="color:#B45309; font-size:1.2rem;" id="roi_money">...</strong>
+                        <p style="font-size:0.85rem; color:#92400E;">por ano de lucro que nunca chega a existir</p>
+                    </div>
+
                     <hr style="border-top:1px solid #FCD34D; margin:16px 0;">
-                    <p>Cada novo estoque colocado sem critério aumenta exatamente o risco que você acabou de
-                        identificar. Corrija o processo agora.</p>
+
+                    <div style="background:rgba(255,255,255,0.5); padding:12px; border-radius:8px; margin-top:16px;">
+                        <p style="font-size:0.9rem; color:#92400E; text-align:left;">
+                            📌 Isso não aparece como um “boleto”. Mas aparece como:<br>
+                            • cansaço constante<br>
+                            • sensação de recomeçar<br>
+                            • crescimento que não sustenta
+                        </p>
+                    </div>
+
+                    <p style="text-align:center; font-weight:700; color:#92400E; margin-top:16px;">👉 Se esse sistema
+                        reduzir só uma parte pequena desse vazamento, ele se paga com folga.</p>
                 </div>
 
-                <!-- Main CTA -->
-                <div style="text-align: center; margin-bottom: 24px;">
+                <!-- PARA QUEM -->
+                <div class="offer-section">
+                    <h3 class="offer-title" style="text-align:center;">🎯 PARA QUEM FAZ SENTIDO</h3>
+                    <ul class="clean-list check-list" style="max-width:400px; margin:0 auto;">
+                        <li>trabalha com consignado ou modelo híbrido</li>
+                        <li>sente que a base entra e sai rápido</li>
+                        <li>perde tempo recomeçando processos</li>
+                        <li>quer previsibilidade e crescimento com segurança</li>
+                    </ul>
+                    <div style="text-align:center; margin-top:24px;">
+                        <p style="color:#EF4444; font-weight:600;">❌ Não é para quem quer “dica de venda”</p>
+                        <p style="color:#EF4444; font-weight:600;">❌ Não é para quem não trabalha com revenda</p>
+                    </div>
+                </div>
+
+                <!-- URGENCIA -->
+                <div class="offer-section" style="text-align:center;">
+                    <p style="font-size:1.1rem; color:#0F172A;">
+                        Cada mês sem critério não mantém tudo igual.<br>
+                        Ele aumenta o custo de recomeçar.
+                    </p>
+                    <p style="font-weight:700; color:var(--primary); margin-top:16px;">
+                        👉 Ou você organiza a decisão agora,<br>
+                        👉 ou continua pagando esse imposto silencioso.
+                    </p>
+                </div>
+
+                <!-- CTA FINAL -->
+                <div class="final-cta-block">
                     <button class="btn-primary" onclick="goToCheckout()">Aplicar o sistema agora</button>
-                    <span
-                        style="display:block; margin-top:12px; background: #F1F5F9; padding: 4px 12px; border-radius: 99px; font-size: 0.8rem; color: #64748B;">🔒
-                        Garantia de 7 dias • Acesso Imediato</span>
+                    <p>Acesso imediato • Implementação prática • Sem mensalidade</p>
+
+                    <div class="security-badges">
+                        <span>🔒 Acesso imediato</span>
+                        <span>🛡️ Garantia de 7 dias</span>
+                        <span>⚡ Direto ao ponto</span>
+                    </div>
                 </div>
 
             </div>
 
-            <!-- Mobile Sticky CTA -->
-            <div class="sticky-cta-mobile" id="sticky_cta">
+            <!-- Sticky CTA Mobile -->
+            <div id="sticky_cta" class="sticky-cta-mobile">
                 <button class="btn-primary btn-sticky" onclick="goToCheckout()">Aplicar o sistema agora</button>
                 <p class="sticky-subtext">Acesso imediato • Implementação prática</p>
             </div>
-
         </section>
 
     </main>
